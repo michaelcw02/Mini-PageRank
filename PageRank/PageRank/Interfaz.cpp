@@ -24,23 +24,24 @@ cout<<"######  ### ####### #     #    #    ####### #     # ### ######  #######"<
 
 
 void Interfaz::entornoPagina(int x, int y, string header){
-	cout<<"******************************************************************************"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"*                                                                            *"<<endl;
-	cout<<"******************************************************************************"<<endl;
+	cout << " ______________________________________________________________________________" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << "|																				|" << endl;
+	cout << " ______________________________________________________________________________" << endl;
 }
 
 Interfaz::~Interfaz(void)
