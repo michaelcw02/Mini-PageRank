@@ -12,6 +12,8 @@ public:
 	static void gotoXY(int, int);
 	static void entornoPagina(int,int,string);
 	static void mostrarBanner();
+	static void mostrarPaginaActual(string);
+	static void mostrarListaPaginas(string[]);
 	~Interfaz(void);
 };
 
