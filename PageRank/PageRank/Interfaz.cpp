@@ -76,8 +76,16 @@ void Interfaz::mostrarListaPaginas(string[] array) {
 
 	gotoXY(x, y++); cout << "Para ingresar a una de las paginas, ingrese el numero correspondiente" << endl; 
 	gotoXY(x, y++); cout << "Presione 'T' para ingresar una pagina nueva para esta pagina" << endl;	
-	gotoXY(x, ++y++); cout << "Presione 'N' para ingresar una pagina desligada a esta" << endl; 
+	gotoXY(x, y++); cout << "Presione 'N' para ingresar una pagina desligada a esta" << endl; 
  
+}
+
+void Interfaz::mostrarOpcionNuevaPagina() {
+
+	int x = 25, y = 7;
+	gotoXY(x, y++); cout << "Ingrese el nombre de la pagina nueva: " << pagina << endl;
+	gotoXY(x+4, y+2);
+
 }
 
 Interfaz::~Interfaz(void)
