@@ -14,8 +14,9 @@ void Grafo::agregar(Nodo * n){
 string Grafo::mostrarGrafo(){
 	stringstream s;
 	list<Nodo*>::iterator d = nodos.begin();
+	int i = 1;
 	while(d != nodos.end())
-		s<<(*d++)->toString();
+		s<<i++<<". "<<(*d++)->toString();
 	return s.str();
 }
 
