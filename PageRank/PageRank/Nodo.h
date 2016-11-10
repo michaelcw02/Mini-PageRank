@@ -28,7 +28,6 @@ public:
 	Nodo* getPaginaInicio();
 	Nodo* getPaginaActual();
 	Nodo* getPaginaSiguiente(Nodo*);
-	int getClicksFromPagina(Nodo*);
 	
 	//VECINOS SALIENTES....
 	void agregarNodo(Nodo*);
@@ -39,6 +38,8 @@ public:
 	void recibirClick(Nodo*);
 	bool recibirClick(string);
 	int getCantVecinos();
+
+
 	int getCantClicks();
 
 	~Nodo(void);

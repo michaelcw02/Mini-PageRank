@@ -82,6 +82,14 @@ void Nodo::recibirClick(Nodo * nom) {
 }
 
 
+int Nodo::getCantClicks() {
+	mapIterator = outbound.begin();
+	int cantClicks = 0;
+	while(mapIterator != outbound.end())
+		cantClicks += mapIterator->second;
+	return cantClicks;
+}
+
 
 Nodo::~Nodo(void){
 	
