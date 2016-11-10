@@ -2,14 +2,15 @@
 
 Nodo::Nodo(){
 	nombre = " ";
-	outbound = new list<Nodo*>();
+	outbound;
 	inbound;
-	mapIterator = inbound.begin();
+	mapIterator = outbound.begin();
 }
 Nodo::Nodo(string nombre) {
 	this->nombre = nombre;
-	outbound = new list<Nodo*>();
-	mapIterator = inbound.begin();
+	outbound;
+	inbound;
+	mapIterator = outbound.begin();
 }
 
 void Nodo::setNombre(string nombre) {
@@ -27,32 +28,42 @@ string Nodo::toString(){
 
 //GET ITERATORS....
 Nodo* Nodo::getPaginaInicio() {
-	mapIterator = inbound.begin();
+	mapIterator = outbound.begin();
 	return mapIterator->first;
 }
 Nodo* Nodo::getPaginaActual(){
 	return mapIterator->first;
 }
 Nodo* Nodo::getPaginaSiguiente(Nodo* nodo) {
-	mapIterator = inbound.find(nodo);
+	mapIterator = outbound.find(nodo);
 	return mapIterator->first;
-}
-int Nodo::getClicksFromPagina(Nodo* nodo) {
-	mapIterator = inbound.find(nodo);
-	return mapIterator->second;
 }
 
 //VECINOS SALIENTES...
 void Nodo::agregarNodo(Nodo * n){
-	outbound->push_back(n);
+	outbound.insert(Map::value_type(n,1));
 }
 
 bool Nodo::enviarClick(string nom) {
-	list<Nodo*>::iterator outIterator = outbound->begin();
-	while(outIterator != outbound->end()) {
-		string nombre = (*outIterator)->getNombre();
+	Map::iterator outIterator = outbound.begin();
+	while(outIterator != outbound.end()) {
+		string nombre = (*outIterator).first->getNombre();
 		if(nombre == nom) {
-			(*outIterator)->recibirClick(this);
+			(*outIterator).second++;
+			(*outIterator).first->recibirClick(this->getNombre());
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Nodo::recibirClick(string nom){
+	Map::iterator inIterator = inbound.begin();
+	while(inIterator != inbound.end()) {
+		string nombre = (*inIterator).first->getNombre();
+		if(nombre == nom) {
+			(*inIterator).second++;
+			//(*outIterator).first->recibirClick(this);
 			return true;	
 		}
 	}
@@ -74,7 +85,4 @@ void Nodo::recibirClick(Nodo * nom) {
 
 Nodo::~Nodo(void){
 	
-	list<Nodo*>::iterator d = outbound->begin();
-	while(d != outbound->end())
-		delete(*d);
 }
