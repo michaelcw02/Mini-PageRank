@@ -10,9 +10,9 @@ using namespace std;
 class Nodo{
 private:
 	string nombre;
-	list<Nodo*>  * outbound; //Lista para los nodos salientes
 	typedef  map < Nodo*, int, less<Nodo*> > Map;
-	Map  inbound;   ///Con solo esta linea ya esta creado, no hace falta ponerle mas
+	Map  outbound;   ///Con solo esta linea ya esta creado, no hace falta ponerle mas
+	Map inbound;
 	Map::iterator mapIterator;
 public:
 	
@@ -37,6 +37,7 @@ public:
 	//VECINOS ENTRANTES....
 	void agregarEntranda(Nodo*);
 	void recibirClick(Nodo*);
+	bool recibirClick(string);
 	int getCantVecinos();
 	int getCantClicks();
 
