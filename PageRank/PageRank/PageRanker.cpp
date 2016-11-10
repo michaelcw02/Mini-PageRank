@@ -26,7 +26,7 @@ double PageRanker::pageRank(Nodo* nodo, Nodo* nodoAnterior) {
 }
 
 double PageRanker::clicks(Nodo* nodo) {
-	
+	return 1.0;
 }
 
 PageRanker::~PageRanker(void) {
