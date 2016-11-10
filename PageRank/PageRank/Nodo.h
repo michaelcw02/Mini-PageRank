@@ -11,10 +11,11 @@ class Nodo{
 private:
 	string nombre;
 	list<Nodo*>  * outbound; //Lista para los nodos salientes
-	typedef  map < Nodo*, int, less<string> > Map;
+	typedef  map < Nodo*, int, less<Nodo*> > Map;
 	Map  inbound;   ///Con solo esta linea ya esta creado, no hace falta ponerle mas
-
+	Map::iterator mapIterator;
 public:
+	
 	Nodo(void);
 	Nodo(string);
 
@@ -22,6 +23,9 @@ public:
 	string getNombre();
 	
 	string toString();
+
+	//Get iterador
+	Nodo * getPaginaActual();
 	
 	//VECINOS SALIENTES....
 	void agregarNodo(Nodo*);

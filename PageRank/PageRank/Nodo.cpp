@@ -4,11 +4,12 @@ Nodo::Nodo(){
 	nombre = " ";
 	outbound = new list<Nodo*>();
 	inbound;
+	mapIterator = inbound.begin();
 }
 Nodo::Nodo(string nombre) {
 	this->nombre = nombre;
 	outbound = new list<Nodo*>();
-	inbound;
+	mapIterator = inbound.begin();
 }
 
 void Nodo::setNombre(string nombre) {
@@ -22,6 +23,10 @@ string Nodo::toString(){
 	stringstream s;
 	s<<"https//:"<<nombre<<endl;
 	return s.str();
+}
+
+Nodo * Nodo::getPaginaActual(){
+	return mapIterator->first;
 }
 
 
