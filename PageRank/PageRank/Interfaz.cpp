@@ -16,7 +16,7 @@ void Interfaz::mostrarBanner(){
 
 	int x = 30, y = 8;
 	
-	clearScreen();
+	system("cls");
 	gotoXY(x, y++);	cout << "================================================= " << endl;
 	gotoXY(x, y++);	cout << "||		Universidad Nacional de Costa Rica		||" << endl;
 	gotoXY(x, y++);	cout << "||			Bienvenido al Mini-PageRank			||" << endl;
@@ -64,15 +64,15 @@ void Interfaz::mostrarPaginaActual(string pagina) {
 	gotoXY(x, y++); cout << "Estas en la pagina: " << pagina << endl;
 }
 
-void Interfaz::mostrarListaPaginas(string[] array) {
-	int x = 30, y = 9;
+void Interfaz::mostrarListaPaginas(string * arr) {
+	/*int x = 30, y = 9;
 
 	gotoXY(x, y++); cout<< "Lista de pagina(s): " << endl;
-	for (int i = 0; i < array.size(); i++) {
+	for (int i = 0; i < arr.size(); i++) {
 		gotoXY(x, y++); cout << i+1 << ". " << array[i] << ".";
 	}
 
-	x = 25;	y++;
+	x = 25;	y++;*/
 
 	gotoXY(x, y++); cout << "Para ingresar a una de las paginas, ingrese el numero correspondiente" << endl; 
 	gotoXY(x, y++); cout << "Presione 'T' para ingresar una pagina nueva para esta pagina" << endl;	

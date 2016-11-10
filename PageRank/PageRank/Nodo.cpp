@@ -2,17 +2,17 @@
 
 Nodo::Nodo(){
 	nombre = " ";
-	outbound = list<Nodo*>();
-	vecinosEntrantes = Map<string, <int>, less<string>>();
+	outbound = new list<Nodo*>();
+	inbound;
 }
 Nodo::Nodo(string nombre) {
-	this.nombre = nombre;
-	outbound = list<Nodo*>();
-	vecinosEntrantes = Map<string, <int>, less<string>>();
+	this->nombre = nombre;
+	outbound = new list<Nodo*>();
+	inbound;
 }
 
 void Nodo::setNombre(string nombre) {
-	this.nombre = nombre;
+	this->nombre = nombre;
 }
 string Nodo::getNombre(){
 	return nombre;
@@ -24,24 +24,18 @@ string Nodo::toString(){
 	return s.str();
 }
 
-//ITERATORS...
-iterator Nodo::getOutIterator() {
-	return outbound.begin();
-}
-iterator Nodo::getInIterator() {
-	return Map.begin();
-}
 
 //VECINOS SALIENTES...
 void Nodo::agregarNodo(Nodo * n){
-	outbound.push(n);
+	outbound->push_back(n);
 }
+
 bool Nodo::enviarClick(string nom) {
-	outIterator = outbound.begin();
-	while(outIterator != outbound.end()) {
-		string nombre = outIterator.getNombre();
-		if(nombre === nom) {
-			outIterator.recibirClick(nom);
+	list<Nodo*>::iterator outIterator = outbound->begin();
+	while(outIterator != outbound->end()) {
+		string nombre = (*outIterator)->getNombre();
+		if(nombre == nom) {
+			(*outIterator)->recibirClick(this);
 			return true;	
 		}
 	}
@@ -49,18 +43,19 @@ bool Nodo::enviarClick(string nom) {
 }
 
 //VECINOS ENTRANTES...
-void Nodo::agregarEntranda(string nom) {
-	//inbound.insert(creaMap::value_type(17, 10.0));
+void Nodo::agregarEntranda(Nodo * node) {
+	inbound.insert(Map::value_type(node, 1));
 }
-void Nodo::recibirClick(string nom) {
+void Nodo::recibirClick(Nodo * nom) {
+	Map::iterator inIterator;
 	inIterator = inbound.find(nom);
-	if(inIterator != inbound.end()) {
+	if(inIterator != inbound.end())
 		inIterator->second++;
-	}
 }
 
 
 
 Nodo::~Nodo(void){
-	/////Investigar sobre el destructor de un map
+	
+	delete outbound;
 }
