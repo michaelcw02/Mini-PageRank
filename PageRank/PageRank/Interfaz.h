@@ -16,7 +16,7 @@ public:
 	static void mostrarBanner();
 	static void mostrarPaginaActual(string);
 	static void mostrarListaPaginas(string, int, int&);
-	static void mostrarOpcionNuevaPagina();
+	static void mostrarOpcionNuevaPagina(int,int,string);
 	static void paginaYaExistente(int,int);
 	static void limpiarPantalla();
 	~Interfaz(void);

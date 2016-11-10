@@ -22,12 +22,14 @@ void Control::iniciarBuscador(){
 				Interfaz::plantillaPagina(0, 0, nodoActual->toString(), graf->mostrarGrafo());
 			}
 			else{
-				Nodo * nnodo = new Nodo(respuesta);
-				registrarPagina(nnodo);
-				Interfaz::plantillaPagina(0, 0, nnodo->toString(), graf->mostrarGrafo());
+				nodoActual = new Nodo(respuesta);
+				registrarPagina(nodoActual);
+				Interfaz::plantillaPagina(0, 0, nodoActual->toString(), graf->mostrarGrafo());
 			}
 			cin>>respuesta;
-						
+			definirOpcion(respuesta, nodoActual);
+			cout<<nodoActual->getCantClicks();
+			system("pause");
 		}
 	}
 	while(activo);
@@ -35,16 +37,28 @@ void Control::iniciarBuscador(){
 }
 
 
-void Control::definirOpcion(string opcion) {
-	
-	if(opcion == "N" || opcion == "n");
-		//se va a crearPagina();
+void Control::definirOpcion(string opcion,Nodo * act) {
+	string respuesta;
+	if(opcion == "N" || opcion == "n"){
+		Interfaz::mostrarOpcionNuevaPagina(0,0,act->toString());
+		cin>>respuesta;
+		crearPaginaApartirDeActual(respuesta,act);
+		system("pause");
+	}
 	if(isDigit(opcion));
 		//hace click
 	if(isAcceder(opcion)); 
 		//entra a pagina..
 
 }
+
+void Control::crearPaginaApartirDeActual(string np,Nodo * actual){
+	Nodo * nnodo = new Nodo(np);
+	registrarPagina(nnodo); //Inserto al graFO
+	actual->agregarNodo(nnodo); //Lo agregamos a los salientes
+}
+
+
 bool Control::isDigit(string opcion) {
 	for(int i = 0; i < opcion.length(); i++) {
 		if (opcion[i] < '0' || opcion[i] > '9')

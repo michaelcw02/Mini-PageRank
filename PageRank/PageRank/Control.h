@@ -14,8 +14,8 @@ public:
 	Nodo * getPagina(string);
 	string mostrarHistorial();
 	string paginasRecientes();
-	void definirOpcion(string);
-	void crearPaginaApartirDeActual();
+	void definirOpcion(string, Nodo *);
+	void crearPaginaApartirDeActual(string,	Nodo*);
 	bool isDigit(string);
 	bool isAcceder(string);
 	~Control(void);

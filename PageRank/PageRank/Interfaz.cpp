@@ -103,11 +103,25 @@ void Interfaz::mostrarListaPaginas(string listas, int x, int &y) {
 	}
 }
 
-void Interfaz::mostrarOpcionNuevaPagina() {
-
-	int x = 25, y = 7;
-	gotoXY(x, y++); cout << "Ingrese el nombre de la pagina nueva: "<< endl;
-	gotoXY(x+4, y+2);
+void Interfaz::mostrarOpcionNuevaPagina(int x,int y,string name) {
+	gotoXY(x, y++);	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|******************************************************************************|" << endl;
+	gotoXY(x, y++);	cout << "|Usted esta en la pagina:                                                      |" << endl;
+	gotoXY(x+26,y-1); cout<<name;
+	gotoXY(x, y++);	cout << "|******************************************************************************|" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|Digite el nombre de la pagina que desea crear y visistar:                     |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |"<< endl;
+	gotoXY(x, y++);	cout << "|             *****************************************************            |" << endl;
+	gotoXY(x, y++);	cout << "|             |                                                   |            |" << endl;
+	gotoXY(x, y++);	cout << "|             *****************************************************            |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+	gotoXY(15,7); //Para que el teclado quede en la posicion de la cajita
 
 }
 
