@@ -10,6 +10,25 @@ void Grafo::agregar(Nodo * n){
 	nodos.push_back(n);
 }
 
+bool Grafo::existePgina(string nom){
+	list<Nodo*>::iterator d = nodos.begin();
+	while(d != nodos.end()){
+		if(nom == (*d++)->getNombre())
+			return true;
+	}
+	return false;
+}
+
+Nodo * Grafo::getPagina(string nom){
+	list<Nodo*>::iterator d = nodos.begin();
+	while(d != nodos.end()){
+		if(nom == (*d)->getNombre())
+			return (*d);
+		else
+			(d++);
+	}
+	return NULL;
+}
 
 string Grafo::mostrarGrafo(){
 	stringstream s;
@@ -24,5 +43,5 @@ Grafo::~Grafo(void)
 {
 	list<Nodo*>::iterator d = nodos.begin();
 	while(d != nodos.end())
-		delete(*d);
+		delete(*d++);
 }

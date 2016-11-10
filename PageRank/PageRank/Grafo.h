@@ -7,6 +7,8 @@ private:
 public:
 	Grafo(void);
 	void agregar(Nodo*);
+	bool existePgina(string);
+	Nodo * getPagina(string);
 	string mostrarGrafo();
 	~Grafo(void);
 };

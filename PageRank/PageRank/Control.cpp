@@ -14,16 +14,31 @@ void Control::iniciarBuscador(){
 		cin>>respuesta;
 		activo = (respuesta == "0")?false:true;
 		if(activo){
-			Nodo * nnodo = new Nodo(respuesta);
-			registrarPagina(nnodo);
-			Interfaz::limpiarPantalla();
-			Interfaz::plantillaPagina(0,0,respuesta,graf->mostrarGrafo());
-			system("pause");
-			Interfaz::limpiarPantalla();
+			if(getPagina(respuesta)){
+				Interfaz::limpiarPantalla();
+				Interfaz::plantillaPagina(0,0,respuesta,graf->mostrarGrafo());
+				system("pause");
+				Interfaz::limpiarPantalla();
+			}
+			else{
+				Nodo * nnodo = new Nodo(respuesta);
+				registrarPagina(nnodo);
+				Interfaz::limpiarPantalla();
+				Interfaz::plantillaPagina(0,0,respuesta,graf->mostrarGrafo());
+				system("pause");
+			}
 		}
 	}
 	while(activo);
 	cin.get();
+}
+
+bool Control::paginaExistente(string nom){
+	return graf->existePgina(nom);
+}
+
+Nodo * Control::getPagina(string nom){
+	return graf->getPagina(nom);
 }
 
 void Control::registrarPagina(Nodo * n){

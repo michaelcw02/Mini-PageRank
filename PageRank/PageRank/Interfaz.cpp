@@ -115,6 +115,10 @@ void Interfaz::limpiarPantalla(){
 	system("cls");
 }
 
+void Interfaz::paginaYaExistente(int x,int y){
+	gotoXY(x,y);cout<<"La pagina que usted ha digitado ya existe."<<endl;
+}
+
 
 
 Interfaz::~Interfaz(void)
