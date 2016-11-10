@@ -63,7 +63,7 @@ void Interfaz::mostrarPaginaActual(string pagina) {
 	gotoXY(x, y++); cout << "Estas en la pagina: " << pagina << endl;
 }
 
-void Interfaz::plantillaPagina(int x,int y,string name,string paginas){
+void Interfaz::plantillaPagina(int x, int y,string name,string paginas){
 	gotoXY(x, y++);	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|******************************************************************************|" << endl;
