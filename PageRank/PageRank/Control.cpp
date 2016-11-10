@@ -53,6 +53,10 @@ void Control::definirOpcion(string opcion, Nodo * act) {
 	if(isAcceder(opcion)){
 		cin>>respuesta;
 		accederDesdePaginaActual(respuesta, act);
+		opcion.pop_back(); //Para quitar la a
+		int opc = stoi(opcion);
+		Nodo * destino = graf->getPaginaByNum(opc);
+		accederDesdePaginaActual(destino->getNombre(),act);
 	}
 }
 
