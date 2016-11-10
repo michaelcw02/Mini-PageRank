@@ -4,6 +4,7 @@
 PageRanker::PageRanker(void) {
 }
 
+//nodoAnterior: nodo que apunta
 double PageRanker::pageRank(Nodo* nodo, Nodo* nodoAnterior) {
 	double result = 0;
 	
@@ -26,7 +27,7 @@ double PageRanker::pageRank(Nodo* nodo, Nodo* nodoAnterior) {
 }
 
 double PageRanker::clicks(Nodo* nodo) {
-	
+	return nodo->getCantClicks();
 }
 
 PageRanker::~PageRanker(void) {

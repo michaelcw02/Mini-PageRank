@@ -1,8 +1,7 @@
 #include "Control.h"
 
 
-Control::Control(void)
-{
+Control::Control(void) {
 	graf = new Grafo();
 }
 
@@ -26,8 +25,6 @@ void Control::iniciarBuscador(){
 	while(activo);
 	cin.get();
 }
-
-
 
 void Control::registrarPagina(Nodo * n){
 	graf->agregar(n);
