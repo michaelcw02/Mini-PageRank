@@ -50,7 +50,7 @@ void Interfaz::entornoPagina(int x, int y){
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
-	gotoXY(x, y++);	cout << "|    Presione 1 para acceder.                      Presione 0 para salir.      |" << endl;
+	gotoXY(x, y++);	cout << "|    Presione ENTER para acceder.                      Presione 0 para salir.  |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
