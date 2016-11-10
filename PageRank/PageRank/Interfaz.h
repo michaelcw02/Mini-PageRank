@@ -6,6 +6,8 @@ using namespace std;
 
 class Interfaz
 {
+private:
+	
 public:
 	Interfaz(void);
 	static void gotoXY(int, int);

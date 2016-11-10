@@ -1,8 +1,8 @@
 #include "Interfaz.h"
 
 
-Interfaz::Interfaz(void)
-{
+Interfaz::Interfaz(void) {
+
 }
 
 void Interfaz::gotoXY(int x, int y) {

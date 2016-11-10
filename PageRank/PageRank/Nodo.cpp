@@ -25,10 +25,22 @@ string Nodo::toString(){
 	return s.str();
 }
 
-Nodo * Nodo::getPaginaActual(){
+//GET ITERATORS....
+Nodo* Nodo::getPaginaInicio() {
+	mapIterator = inbound.begin();
 	return mapIterator->first;
 }
-
+Nodo* Nodo::getPaginaActual(){
+	return mapIterator->first;
+}
+Nodo* Nodo::getPaginaSiguiente(Nodo* nodo) {
+	mapIterator = inbound.find(nodo);
+	return mapIterator->first;
+}
+int Nodo::getClicksFromPagina(Nodo* nodo) {
+	mapIterator = inbound.find(nodo);
+	return mapIterator->second;
+}
 
 //VECINOS SALIENTES...
 void Nodo::agregarNodo(Nodo * n){

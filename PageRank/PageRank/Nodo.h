@@ -25,7 +25,10 @@ public:
 	string toString();
 
 	//Get iterador
-	Nodo * getPaginaActual();
+	Nodo* getPaginaInicio();
+	Nodo* getPaginaActual();
+	Nodo* getPaginaSiguiente(Nodo*);
+	int getClicksFromPagina(Nodo*);
 	
 	//VECINOS SALIENTES....
 	void agregarNodo(Nodo*);
