@@ -39,6 +39,14 @@ string Grafo::mostrarGrafo(){
 	return s.str();
 }
 
+void Grafo::agregarAvisitados(Nodo * actual,Nodo * saliente){
+	actual->agregarNodo(saliente);
+}
+
+void Grafo::agregarAentradas(Nodo * actual,Nodo * entrante){
+	actual->agregarEntranda(entrante);
+}
+
 Grafo::~Grafo(void)
 {
 	list<Nodo*>::iterator d = nodos.begin();

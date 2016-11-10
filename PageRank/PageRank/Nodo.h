@@ -39,7 +39,6 @@ public:
 	bool recibirClick(string);
 	int getCantVecinos();
 
-
 	int getCantClicks();
 
 	~Nodo(void);

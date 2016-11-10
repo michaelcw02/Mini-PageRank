@@ -9,6 +9,8 @@ public:
 	void agregar(Nodo*);
 	bool existePgina(string);
 	Nodo * getPagina(string);
+	void agregarAvisitados(Nodo*,Nodo*);
+	void agregarAentradas(Nodo*,Nodo*);
 	string mostrarGrafo();
 	~Grafo(void);
 };
