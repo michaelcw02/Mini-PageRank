@@ -17,6 +17,10 @@ void Control::iniciarBuscador(){
 		if(activo){
 			Nodo * nnodo = new Nodo(respuesta);
 			registrarPagina(nnodo);
+			Interfaz::limpiarPantalla();
+			Interfaz::plantillaPagina(0,0,respuesta,graf->mostrarGrafo());
+			system("pause");
+			Interfaz::limpiarPantalla();
 		}
 	}
 	while(activo);
