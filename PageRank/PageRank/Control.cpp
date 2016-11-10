@@ -37,27 +37,28 @@ void Control::iniciarBuscador(){
 }
 
 
-void Control::definirOpcion(string opcion,Nodo * act) {
+void Control::definirOpcion(string opcion, Nodo * act) {
 	string respuesta;
 	if(opcion == "N" || opcion == "n"){
 		Interfaz::mostrarOpcionNuevaPagina(0,0,act->toString());
 		cin>>respuesta;
-		crearPaginaApartirDeActual(respuesta,act);
+		crearPaginaApartirDeActual(respuesta, act);
 		system("pause");
 	}
+
 	if(isDigit(opcion));
 		//hace click
 	if(isAcceder(opcion)){
 		cin>>respuesta;
 		accederDesdePaginaActual(respuesta,act);
 	}
-
 }
 
-void Control::crearPaginaApartirDeActual(string np,Nodo * actual){
+void Control::crearPaginaApartirDeActual(string np, Nodo * actual){
 	Nodo * nnodo = new Nodo(np);
-	registrarPagina(nnodo); //Inserto al graFO
+	registrarPagina(nnodo); //Inserto al Grafo
 	actual->agregarNodo(nnodo); //Lo agregamos a los salientes
+	nnodo->agregarEntranda(actual);
 }
 
 void Control::accederDesdePaginaActual(string pagAcceder,Nodo * actual){ /////Checkear esto 

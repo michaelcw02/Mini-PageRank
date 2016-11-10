@@ -33,6 +33,8 @@ public:
 	void agregarNodo(Nodo*);
 	bool enviarClick(string); //string = nombre del nodo...
 	bool existeSaliente(Nodo*);
+	bool enviarClick(Nodo*);
+
 
 	//VECINOS ENTRANTES....
 	void agregarEntranda(Nodo*);

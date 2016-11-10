@@ -30,6 +30,17 @@ Nodo * Grafo::getPagina(string nom){
 	return NULL;
 }
 
+Nodo* Grafo::getPaginaByNum(int num) {
+	list<Nodo*>::iterator d = nodos.begin();
+	for (int i = 1; i <= num && d != nodos.end(); i++, d++);
+	return (d != nodos.end()) ? (*d) : NULL;
+}
+
+void Grafo::agregarClickAPagina(int num, Nodo* nodoFuente) {
+	Nodo* nodoDestino = getPaginaByNum(num);
+	
+}
+
 string Grafo::mostrarGrafo(){
 	stringstream s;
 	list<Nodo*>::iterator d = nodos.begin();
