@@ -10,11 +10,9 @@ using namespace std;
 class Nodo{
 private:
 	string nombre;
-	list<Nodo*> outbound;
-	typedef multimap < string, int, less<string> > Map;
-	Map inbound;
-	list<Nodo*>::iterator outIterator;
-	Map iterator inIterator;
+	list<Nodo*>  * outbound; //Lista para los nodos salientes
+	typedef  map < Nodo*, int, less<string> > Map;
+	Map  inbound;   ///Con solo esta linea ya esta creado, no hace falta ponerle mas
 
 public:
 	Nodo(void);
@@ -24,18 +22,14 @@ public:
 	string getNombre();
 	
 	string toString();
-
-	//ITERATORS...
-	iterator getOutIterator();
-	iterator getInIterator();
 	
 	//VECINOS SALIENTES....
 	void agregarNodo(Nodo*);
 	bool enviarClick(string); //string = nombre del nodo...
 
 	//VECINOS ENTRANTES....
-	void agregarEntranda(string nom);
-	void recibirClick(string);
+	void agregarEntranda(Nodo*);
+	void recibirClick(Nodo*);
 	int getCantVecinos();
 	int getCantClicks();
 

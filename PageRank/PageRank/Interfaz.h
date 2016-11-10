@@ -13,7 +13,7 @@ public:
 	static void entornoPagina(int,int,string);
 	static void mostrarBanner();
 	static void mostrarPaginaActual(string);
-	static void mostrarListaPaginas(string[]);
+	static void mostrarListaPaginas(string*);
 	static void mostrarOpcionNuevaPagina();
 	~Interfaz(void);
 };
