@@ -56,6 +56,16 @@ bool Nodo::enviarClick(string nom) {
 	}
 	return false;
 }
+bool Nodo::enviarClick(Nodo* nodo) {
+	Map::iterator outIterator;
+	outIterator = outbound.find(nodo);
+	if(outIterator != outbound.end()) {
+		(*outIterator).second++;
+		(*outIterator).first->recibirClick(this->getNombre());
+		return true;
+	}
+	return false;
+}
 
 bool Nodo::recibirClick(string nom){
 	Map::iterator inIterator = inbound.begin();
