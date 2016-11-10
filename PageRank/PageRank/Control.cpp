@@ -20,11 +20,16 @@ void Control::iniciarBuscador(){
 			Interfaz::limpiarPantalla();
 			Interfaz::plantillaPagina(0,0,respuesta,graf->mostrarGrafo());
 			system("pause");
+			
 			Interfaz::limpiarPantalla();
 		}
 	}
 	while(activo);
 	cin.get();
+}
+
+bool Control::paginaExistente(string nom){
+	return graf->existePgina(nom);
 }
 
 
