@@ -47,8 +47,10 @@ void Control::definirOpcion(string opcion,Nodo * act) {
 	}
 	if(isDigit(opcion));
 		//hace click
-	if(isAcceder(opcion)); 
-		//entra a pagina..
+	if(isAcceder(opcion)){
+		cin>>respuesta;
+		accederDesdePaginaActual(respuesta,act);
+	}
 
 }
 
@@ -56,6 +58,24 @@ void Control::crearPaginaApartirDeActual(string np,Nodo * actual){
 	Nodo * nnodo = new Nodo(np);
 	registrarPagina(nnodo); //Inserto al graFO
 	actual->agregarNodo(nnodo); //Lo agregamos a los salientes
+}
+
+void Control::accederDesdePaginaActual(string pagAcceder,Nodo * actual){ /////Checkear esto 
+	Nodo * nodoFuturo = getPagina(pagAcceder);
+	if(nodoFuturo){
+		if(nodoFuturo->existeEntrante(actual)){
+			nodoFuturo->recibirClick(actual->getNombre());
+		}else{
+			nodoFuturo->agregarEntranda(actual);
+			nodoFuturo->recibirClick(actual->getNombre());
+		}
+		if(actual->existeSaliente(nodoFuturo)){
+			actual->enviarClick(nodoFuturo->getNombre());
+		}else{
+			actual->agregarNodo(nodoFuturo);
+			actual->enviarClick(nodoFuturo->getNombre());
+		}
+	}
 }
 
 

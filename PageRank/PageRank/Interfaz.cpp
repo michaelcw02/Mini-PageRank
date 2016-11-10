@@ -121,7 +121,7 @@ void Interfaz::mostrarOpcionNuevaPagina(int x,int y,string name) {
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
-	gotoXY(15,7); //Para que el teclado quede en la posicion de la cajita
+	gotoXY(15,8); //Para que el teclado quede en la posicion de la cajita
 
 }
 

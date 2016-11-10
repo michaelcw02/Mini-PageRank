@@ -16,6 +16,7 @@ public:
 	string paginasRecientes();
 	void definirOpcion(string, Nodo *);
 	void crearPaginaApartirDeActual(string,	Nodo*);
+	void accederDesdePaginaActual(string,Nodo * ); //Se esta en una pagina y se quiere ir a otra 
 	bool isDigit(string);
 	bool isAcceder(string);
 	~Control(void);

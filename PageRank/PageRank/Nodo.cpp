@@ -90,6 +90,26 @@ int Nodo::getCantClicks() {
 	return cantClicks;
 }
 
+bool Nodo::existeSaliente(Nodo * ne){
+	mapIterator = outbound.begin();
+	while(mapIterator != outbound.end()){
+		if(mapIterator->first->getNombre() == ne->getNombre())
+			return true;
+		mapIterator++;
+	}
+	return false;
+}
+
+bool Nodo::existeEntrante(Nodo * ne){
+	mapIterator = inbound.begin();
+	while(mapIterator != inbound.end()){
+		if(mapIterator->first->getNombre() == ne->getNombre())
+			return true;
+		mapIterator++;
+	}
+	return false;
+}
+
 
 Nodo::~Nodo(void){
 	
