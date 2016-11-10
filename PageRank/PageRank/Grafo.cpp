@@ -38,7 +38,7 @@ Nodo* Grafo::getPaginaByNum(int num) {
 
 void Grafo::agregarClickAPagina(int num, Nodo* nodoFuente) {
 	Nodo* nodoDestino = getPaginaByNum(num);
-	
+	nodoFuente->enviarClick(nodoDestino);
 }
 
 string Grafo::mostrarGrafo(){

@@ -46,11 +46,13 @@ void Control::definirOpcion(string opcion, Nodo * act) {
 		system("pause");
 	}
 
-	if(isDigit(opcion));
-		//hace click
+	if(isDigit(opcion)) {
+		int opc = stoi(opcion);
+		graf->agregarClickAPagina(opc, act);
+	}
 	if(isAcceder(opcion)){
 		cin>>respuesta;
-		accederDesdePaginaActual(respuesta,act);
+		accederDesdePaginaActual(respuesta, act);
 	}
 }
 
