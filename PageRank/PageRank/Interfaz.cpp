@@ -63,6 +63,28 @@ void Interfaz::mostrarPaginaActual(string pagina) {
 	gotoXY(x, y++); cout << "Estas en la pagina: " << pagina << endl;
 }
 
+void Interfaz::plantillaPagina(int x,int y,string name){
+	gotoXY(x, y++);	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|******************************************************************************|" << endl;
+	gotoXY(x, y++);	cout << "|Te encuentras en la pagina:                                                   |" << endl;
+	gotoXY(x, y++);	cout << "|******************************************************************************|" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|             *****************************************************            |" << endl;
+	gotoXY(x, y++);	cout << "|             |                                                   |            |" << endl;
+	gotoXY(x, y++);	cout << "|             *****************************************************            |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|    Presione ENTER para acceder.                      Presione 0 para salir.  |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+}
+
 void Interfaz::mostrarListaPaginas(list<Nodo*> listas) {
 	int x = 30, y = 9;
 

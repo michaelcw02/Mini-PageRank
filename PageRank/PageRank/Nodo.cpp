@@ -62,5 +62,7 @@ void Nodo::recibirClick(Nodo * nom) {
 
 Nodo::~Nodo(void){
 	
-	delete outbound;
+	list<Nodo*>::iterator d = outbound->begin();
+	while(d != outbound->end())
+		delete(*d);
 }
