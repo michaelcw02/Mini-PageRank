@@ -39,6 +39,14 @@ void Control::iniciarBuscador(){
 
 void Control::definirOpcion(string opcion, Nodo * act) {
 	string respuesta;
+	if(opcion == "xxx" || opcion == "XXX") {
+		list<Nodo*> listita = getNodos();
+		list<Nodo*>::iterator ite = listita.begin();
+		while(ite != listita.end()) {
+			cout<<(*ite)->toString()<<"  -> "<<PageRanker::pageRank((*ite), NULL)<<endl;ite++;
+		}
+		cout<<"SI ESTA MIERDA SALE BIEN, ME CULEO A ANDREY ARGUEDAS."<<endl;
+	}
 	if(opcion == "N" || opcion == "n"){
 		Interfaz::mostrarOpcionNuevaPagina(0,0,act->toString());
 		cin>>respuesta;
@@ -63,6 +71,10 @@ void Control::crearPaginaApartirDeActual(string np, Nodo * actual){
 	registrarPagina(nnodo); //Inserto al Grafo
 	actual->agregarNodo(nnodo); //Lo agregamos a los salientes
 	nnodo->agregarEntranda(actual);
+}
+
+list<Nodo*> Control::getNodos(){
+	return graf->getNodos();
 }
 
 void Control::accederDesdePaginaActual(string pagAcceder,Nodo * actual){ /////Checkear esto 

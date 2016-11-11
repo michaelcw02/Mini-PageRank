@@ -44,6 +44,10 @@ void Grafo::agregarClickAPagina(int num, Nodo* nodoFuente) {
 	nodoFuente->enviarClick(nodoDestino);
 }
 
+list<Nodo*> Grafo::getNodos(){
+	return nodos;
+}
+
 string Grafo::mostrarGrafo(){
 	stringstream s;
 	list<Nodo*>::iterator d = nodos.begin();

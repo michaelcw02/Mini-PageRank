@@ -6,8 +6,8 @@ class PageRanker {
 public:
 	PageRanker(void);
 	
-	double pageRank(Nodo*, Nodo*);
-	double clicks(Nodo*);
+	static double pageRank(Nodo*, Nodo*);
+	static double clicks(Nodo*);
 	
 	~PageRanker(void);
 };

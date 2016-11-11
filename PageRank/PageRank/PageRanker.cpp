@@ -11,7 +11,7 @@ double PageRanker::pageRank(Nodo* nodo, Nodo* nodoAnterior) {
 	Nodo* vecino = nodo->getPaginaInicio();
 	
 	if (vecino == NULL)
-		result = (1-D);
+		result = 0;
 
 	while(vecino != NULL) {
 	

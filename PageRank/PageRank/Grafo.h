@@ -13,6 +13,7 @@ public:
 	void agregarClickAPagina(int, Nodo*);
 	void agregarAvisitados(Nodo*,Nodo*);
 	void agregarAentradas(Nodo*,Nodo*);
+	list<Nodo*> getNodos();
 	string mostrarGrafo();
 	~Grafo(void);
 };

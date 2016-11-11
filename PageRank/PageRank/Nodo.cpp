@@ -28,15 +28,13 @@ string Nodo::toString(){
 
 //GET ITERATORS....
 Nodo* Nodo::getPaginaInicio() {
-	mapIterator = outbound.begin();
-	return mapIterator->first;
-}
-Nodo* Nodo::getPaginaActual(){
-	return mapIterator->first;
+	Map::iterator ite = inbound.begin();
+	return (ite != inbound.end()) ? ite->first : NULL;
 }
 Nodo* Nodo::getPaginaSiguiente(Nodo* nodo) {
-	mapIterator = outbound.find(nodo);
-	return mapIterator->first;
+	Map::iterator ite = inbound.find(nodo);
+	(ite != inbound.end()) ? ite++ : ite = inbound.end();
+	return (ite != inbound.end()) ? ite->first : NULL;
 }
 
 //VECINOS SALIENTES...
