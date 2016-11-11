@@ -80,6 +80,7 @@ void Interfaz::plantillaPagina(int x, int y,string name,string paginas){
 	gotoXY(x, y++);	cout << "|- Presione el numero de la pagina para hacer un click.                        |" << endl;
 	gotoXY(x, y++);	cout << "|- Presione el numero de la pagina y seguido una 'a' para acceder a esta.      |" << endl;
 	gotoXY(x, y++);	cout << "|- Para visitar una pagina nueva presione la letra N                           |" << endl;
+	gotoXY(x, y++);	cout << "|- Digite z para salir                                                         |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|Opcion:                                                                       |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
