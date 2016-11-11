@@ -19,6 +19,14 @@ bool Grafo::existePgina(string nom){
 	return false;
 }
 
+void Grafo::setNoVisitados() {
+	list<Nodo*>::iterator ite = nodos.begin();
+	while (ite != nodos.end()) {
+		(*ite)->setNoVisitados();
+		ite++;
+	}
+}
+
 Nodo * Grafo::getPagina(string nom){
 	list<Nodo*>::iterator d = nodos.begin();
 	while(d != nodos.end()){

@@ -50,8 +50,10 @@ void Control::definirOpcion(string opcion, Nodo * act,string & r) {
 	string respuesta;
 	if(opcion == "xxx" || opcion == "XXX") {
 		list<Nodo*> listita = getNodos();
-		list<Nodo*>::iterator ite = listita.begin();
+		list<Nodo*>::iterator ite = listita.end();
+		ite--;
 		while(ite != listita.end()) {
+			graf->setNoVisitados();
 			cout<<(*ite)->toString()<<"  -> "<<PageRanker::pageRank((*ite), NULL)<<endl;ite++;
 		}
 	}
@@ -82,9 +84,10 @@ void Control::definirOpcion(string opcion, Nodo * act,string & r) {
 
 void Control::crearPaginaApartirDeActual(string np, Nodo * actual){
 	Nodo * nnodo = new Nodo(np);
-	registrarPagina(nnodo); //Inserto al Grafo
+	//registrarPagina(nnodo); //Inserto al Grafo
 	actual->agregarNodo(nnodo); //Lo agregamos a los salientes
 	nnodo->agregarEntranda(actual);
+	registrarPagina(nnodo);
 }
 
 list<Nodo*> Control::getNodos(){

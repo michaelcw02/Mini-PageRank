@@ -9,18 +9,18 @@ double PageRanker::pageRank(Nodo* nodo, Nodo* nodoAnterior) {
 	double result = 0;
 	
 	Nodo* vecino = nodo->getPaginaNoVisitado();
-	
+	string nombre = nodo->getNombre();
 	if (vecino == NULL)
 		result = 0;
 
 	while(vecino != NULL) {
 	
+		nodo->setPaginaVisitado(vecino);
 		if(vecino == nodoAnterior)
 			result += (1-D);
 		if(vecino != nodoAnterior)
 			result += pageRank(vecino, nodo) / clicks(vecino);
-		vecino->setPaginaVisitado(nodo);
-		vecino = nodo->getPaginaSiguiente(vecino);
+		vecino = nodo->getPaginaNoVisitado();
 
 	}
 

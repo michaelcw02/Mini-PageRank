@@ -30,7 +30,7 @@ public:
 	Nodo* getPaginaSiguiente(Nodo*);
 	Nodo* getPaginaNoVisitado();
 	void setPaginaVisitado(Nodo*);
-	
+	void setNoVisitados();
 	//VECINOS SALIENTES....
 	void agregarNodo(Nodo*);
 	bool enviarClick(string); //string = nombre del nodo...

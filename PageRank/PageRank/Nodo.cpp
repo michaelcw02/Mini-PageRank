@@ -35,7 +35,7 @@ Nodo* Nodo::getPaginaSiguiente(Nodo* nodo) {
 Nodo* Nodo::getPaginaNoVisitado() {
 	MapBool::iterator ite = inbound.begin();
 	while (ite != inbound.end()) {
-		if (ite->second)
+		if (ite->second == false)
 			return ite -> first;
 		ite++;
 	}
@@ -43,7 +43,15 @@ Nodo* Nodo::getPaginaNoVisitado() {
 }
 void Nodo::setPaginaVisitado(Nodo* nodo) {
 	MapBool::iterator ite = inbound.find(nodo);
-	ite->second = true;
+	if(ite !=  inbound.end())
+		ite->second = true;
+}
+void Nodo::setNoVisitados() {
+	MapBool::iterator ite = inbound.begin();
+	while (ite != inbound.end()) {
+		ite->second = false;
+		ite++;
+	}
 }
 
 //VECINOS SALIENTES...
@@ -90,7 +98,7 @@ bool Nodo::recibirClick(string nom){
 
 //VECINOS ENTRANTES...
 void Nodo::agregarEntranda(Nodo * node) {
-	inbound.insert(Map::value_type(node, 1));
+	inbound.insert(MapBool::value_type(node, false));
 }
 void Nodo::recibirClick(Nodo * nom) {
 	/*Map::iterator inIterator;

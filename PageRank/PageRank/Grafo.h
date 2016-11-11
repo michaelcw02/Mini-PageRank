@@ -8,6 +8,7 @@ public:
 	Grafo(void);
 	void agregar(Nodo*);
 	bool existePgina(string);
+	void setNoVisitados();
 	Nodo* getPagina(string);
 	Nodo* getPaginaByNum(int, Nodo*);
 	void agregarClickAPagina(int, Nodo*);
