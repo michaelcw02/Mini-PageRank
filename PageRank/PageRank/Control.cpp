@@ -24,12 +24,21 @@ void Control::iniciarBuscador(){
 				Interfaz::plantillaPagina(0, 0, nodoActual->toString(), graf->mostrarGrafoSinPagActual(respuesta));
 			}
 			else{
+				do{
 				nodoActual = new Nodo(respuesta);
 				registrarPagina(nodoActual);
+				Interfaz::limpiarPantalla();
 				Interfaz::plantillaPagina(0, 0, nodoActual->toString(), graf->mostrarGrafoSinPagActual(respuesta));
+				cout<<"Digite z para salir y volver al menu inicial"<<endl;
+				cin>>respuesta;
+				definirOpcion(respuesta, nodoActual,respuesta);
+				cout<<nodoActual->getCantClicks();
+				system("pause");
+				}
+				while(respuesta != "z" && respuesta != "Z");
 			}
 			cin>>respuesta;
-			definirOpcion(respuesta, nodoActual);
+			definirOpcion(respuesta, nodoActual,respuesta);
 			cout<<nodoActual->getCantClicks();
 			system("pause");
 		}
@@ -39,7 +48,7 @@ void Control::iniciarBuscador(){
 }
 
 
-void Control::definirOpcion(string opcion, Nodo * act) {
+void Control::definirOpcion(string opcion, Nodo * act,string & r) {
 	Nodo* nodo;
 	string respuesta;
 	if(opcion == "xxx" || opcion == "XXX") {
@@ -53,6 +62,7 @@ void Control::definirOpcion(string opcion, Nodo * act) {
 		Interfaz::limpiarPantalla();
 		Interfaz::mostrarOpcionNuevaPagina(0,0,act->toString());
 		cin>>respuesta;
+		r = respuesta;
 		nodo = graf->getPagina(respuesta);
 		if (!nodo)
 			crearPaginaApartirDeActual(respuesta, act);
