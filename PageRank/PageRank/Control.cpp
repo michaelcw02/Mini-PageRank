@@ -72,13 +72,13 @@ void Control::definirOpcion(string opcion, Nodo * act,string & r) {
 
 	if(isDigit(opcion)) {
 		int opc = stoi(opcion);
-		nodo = graf->getPaginaByNum(opc);
+		nodo = graf->getPaginaByNum(opc, act);
 		darClick(nodo, act);
 	}
 	if(isAcceder(opcion)){
 		opcion.pop_back(); //Para quitar la a
 		int opc = stoi(opcion);
-		nodo = graf->getPaginaByNum(opc);
+		nodo = graf->getPaginaByNum(opc, act);
 		darClick(nodo,act);
 	}
 }

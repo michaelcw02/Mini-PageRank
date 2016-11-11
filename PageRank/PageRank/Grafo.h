@@ -9,7 +9,7 @@ public:
 	void agregar(Nodo*);
 	bool existePgina(string);
 	Nodo* getPagina(string);
-	Nodo* getPaginaByNum(int);
+	Nodo* getPaginaByNum(int, Nodo*);
 	void agregarClickAPagina(int, Nodo*);
 	void agregarAvisitados(Nodo*,Nodo*);
 	void agregarAentradas(Nodo*,Nodo*);

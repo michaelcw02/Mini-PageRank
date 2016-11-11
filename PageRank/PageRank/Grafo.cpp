@@ -30,9 +30,11 @@ Nodo * Grafo::getPagina(string nom){
 	return NULL;
 }
 
-Nodo* Grafo::getPaginaByNum(int num) {
+Nodo* Grafo::getPaginaByNum(int num, Nodo* nodoActual) {
 	list<Nodo*>::iterator d = nodos.begin();
 	for(int i = 0; i < num; i++, d++) {
+		if ((*d) == nodoActual)
+			d++;
 		if(i == num -1 && d != nodos.end())
 			return (*d);
 	}
@@ -40,7 +42,7 @@ Nodo* Grafo::getPaginaByNum(int num) {
 }
 
 void Grafo::agregarClickAPagina(int num, Nodo* nodoFuente) {
-	Nodo* nodoDestino = getPaginaByNum(num);
+	Nodo* nodoDestino = getPaginaByNum(num, nodoFuente);
 	nodoFuente->enviarClick(nodoDestino);
 }
 
@@ -78,8 +80,7 @@ void Grafo::agregarAentradas(Nodo * actual,Nodo * entrante){
 	actual->agregarEntranda(entrante);
 }
 
-Grafo::~Grafo(void)
-{
+Grafo::~Grafo(void) {
 	list<Nodo*>::iterator d = nodos.begin();
 	while(d != nodos.end())
 		delete(*d++);
