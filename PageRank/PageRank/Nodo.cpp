@@ -2,14 +2,10 @@
 
 Nodo::Nodo(){
 	nombre = " ";
-	outbound;
-	inbound;
 	mapIterator = outbound.begin();
 }
 Nodo::Nodo(string nombre) {
 	this->nombre = nombre;
-	outbound;
-	inbound;
 	mapIterator = outbound.begin();
 }
 
@@ -35,6 +31,19 @@ Nodo* Nodo::getPaginaSiguiente(Nodo* nodo) {
 	MapBool::iterator ite = inbound.find(nodo);
 	(ite != inbound.end()) ? ite++ : ite = inbound.end();
 	return (ite != inbound.end()) ? ite->first : NULL;
+}
+Nodo* Nodo::getPaginaNoVisitado() {
+	MapBool::iterator ite = inbound.begin();
+	while (ite != inbound.end()) {
+		if (ite->second)
+			return ite -> first;
+		ite++;
+	}
+	return NULL;
+}
+void Nodo::setPaginaVisitado(Nodo* nodo) {
+	MapBool::iterator ite = inbound.find(nodo);
+	ite->second = true;
 }
 
 //VECINOS SALIENTES...

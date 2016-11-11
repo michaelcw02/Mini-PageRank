@@ -27,8 +27,9 @@ public:
 
 	//Get iterador
 	Nodo* getPaginaInicio();
-	Nodo* getPaginaActual();
 	Nodo* getPaginaSiguiente(Nodo*);
+	Nodo* getPaginaNoVisitado();
+	void setPaginaVisitado(Nodo*);
 	
 	//VECINOS SALIENTES....
 	void agregarNodo(Nodo*);

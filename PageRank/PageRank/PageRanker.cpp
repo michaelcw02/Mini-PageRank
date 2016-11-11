@@ -8,7 +8,7 @@ PageRanker::PageRanker(void) {
 double PageRanker::pageRank(Nodo* nodo, Nodo* nodoAnterior) {
 	double result = 0;
 	
-	Nodo* vecino = nodo->getPaginaInicio();
+	Nodo* vecino = nodo->getPaginaNoVisitado();
 	
 	if (vecino == NULL)
 		result = 0;
@@ -19,6 +19,7 @@ double PageRanker::pageRank(Nodo* nodo, Nodo* nodoAnterior) {
 			result += (1-D);
 		if(vecino != nodoAnterior)
 			result += pageRank(vecino, nodo) / clicks(vecino);
+		vecino->setPaginaVisitado(nodo);
 		vecino = nodo->getPaginaSiguiente(vecino);
 
 	}

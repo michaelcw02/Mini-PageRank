@@ -8,7 +8,6 @@ public:
 	
 	static double pageRank(Nodo*, Nodo*);
 	static double clicks(Nodo*);
-	
 	~PageRanker(void);
 };
 
