@@ -28,11 +28,11 @@ string Nodo::toString(){
 
 //GET ITERATORS....
 Nodo* Nodo::getPaginaInicio() {
-	Map::iterator ite = inbound.begin();
+	MapBool::iterator ite = inbound.begin();
 	return (ite != inbound.end()) ? ite->first : NULL;
 }
 Nodo* Nodo::getPaginaSiguiente(Nodo* nodo) {
-	Map::iterator ite = inbound.find(nodo);
+	MapBool::iterator ite = inbound.find(nodo);
 	(ite != inbound.end()) ? ite++ : ite = inbound.end();
 	return (ite != inbound.end()) ? ite->first : NULL;
 }
@@ -66,7 +66,7 @@ bool Nodo::enviarClick(Nodo* nodo) {
 }
 
 bool Nodo::recibirClick(string nom){
-	Map::iterator inIterator = inbound.begin();
+	/*Map::iterator inIterator = inbound.begin();
 	while(inIterator != inbound.end()) {
 		string nombre = (*inIterator).first->getNombre();
 		if(nombre == nom) {
@@ -75,7 +75,8 @@ bool Nodo::recibirClick(string nom){
 			return true;	
 		}
 	}
-	return false;
+	return false;*/
+	return true;
 }
 
 //VECINOS ENTRANTES...
@@ -83,10 +84,10 @@ void Nodo::agregarEntranda(Nodo * node) {
 	inbound.insert(Map::value_type(node, 1));
 }
 void Nodo::recibirClick(Nodo * nom) {
-	Map::iterator inIterator;
+	/*Map::iterator inIterator;
 	inIterator = inbound.find(nom);
 	if(inIterator != inbound.end())
-		inIterator->second++;
+		inIterator->second++;*/
 }
 
 
@@ -109,11 +110,11 @@ bool Nodo::existeSaliente(Nodo * ne){
 }
 
 bool Nodo::existeEntrante(Nodo * ne){
-	mapIterator = inbound.begin();
-	while(mapIterator != inbound.end()){
-		if(mapIterator->first->getNombre() == ne->getNombre())
+	MapBool::iterator mapB = inbound.begin();
+	while(mapB != inbound.end()){
+		if(mapB->first->getNombre() == ne->getNombre())
 			return true;
-		mapIterator++;
+		mapB++;
 	}
 	return false;
 }
