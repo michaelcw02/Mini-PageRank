@@ -61,7 +61,7 @@ bool Nodo::enviarClick(Nodo* nodo) {
 	outIterator = outbound.find(nodo);
 	if(outIterator != outbound.end()) {
 		(*outIterator).second++;
-		(*outIterator).first->recibirClick(this->getNombre());
+		(*outIterator).first->recibirClick(this);
 		return true;
 	}
 	return false;
