@@ -9,6 +9,7 @@ void Control::iniciarBuscador(){
 	bool activo = true;
 	string respuesta = " ";
 	Nodo* nodoActual;
+	string pagFutura = " ";
 	Interfaz::mostrarBanner();
 	do{
 		Interfaz::limpiarPantalla();
@@ -16,15 +17,16 @@ void Control::iniciarBuscador(){
 		cin>>respuesta;
 		activo = (respuesta == "0") ? false : true;
 		Interfaz::limpiarPantalla();
+
 		if(activo){
 			nodoActual = getPagina(respuesta);
 			if(nodoActual){
-				Interfaz::plantillaPagina(0, 0, nodoActual->toString(), graf->mostrarGrafo());
+				Interfaz::plantillaPagina(0, 0, nodoActual->toString(), graf->mostrarGrafoSinPagActual(respuesta));
 			}
 			else{
 				nodoActual = new Nodo(respuesta);
 				registrarPagina(nodoActual);
-				Interfaz::plantillaPagina(0, 0, nodoActual->toString(), graf->mostrarGrafo());
+				Interfaz::plantillaPagina(0, 0, nodoActual->toString(), graf->mostrarGrafoSinPagActual(respuesta));
 			}
 			cin>>respuesta;
 			definirOpcion(respuesta, nodoActual);
@@ -45,13 +47,12 @@ void Control::definirOpcion(string opcion, Nodo * act) {
 		while(ite != listita.end()) {
 			cout<<(*ite)->toString()<<"  -> "<<PageRanker::pageRank((*ite), NULL)<<endl;ite++;
 		}
-		cout<<"SI ESTA MIERDA SALE BIEN, ME CULEO A ANDREY ARGUEDAS."<<endl;
 	}
 	if(opcion == "N" || opcion == "n"){
+		Interfaz::limpiarPantalla();
 		Interfaz::mostrarOpcionNuevaPagina(0,0,act->toString());
 		cin>>respuesta;
 		crearPaginaApartirDeActual(respuesta, act);
-		system("pause");
 	}
 
 	if(isDigit(opcion)) {

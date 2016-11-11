@@ -57,6 +57,19 @@ string Grafo::mostrarGrafo(){
 	return s.str();
 }
 
+string Grafo::mostrarGrafoSinPagActual(string nom){
+	stringstream s;
+	list<Nodo*>::iterator d = nodos.begin();
+	int i = 1;
+	while(d != nodos.end()){
+		if((*d)->getNombre() != nom)
+			s<<i++<<". "<<(*d++)->toString();
+		else
+			d++;
+	}
+	return s.str();
+}
+
 void Grafo::agregarAvisitados(Nodo * actual,Nodo * saliente){
 	actual->agregarNodo(saliente);
 }
