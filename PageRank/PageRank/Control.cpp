@@ -40,6 +40,7 @@ void Control::iniciarBuscador(){
 
 
 void Control::definirOpcion(string opcion, Nodo * act) {
+	Nodo* nodo;
 	string respuesta;
 	if(opcion == "xxx" || opcion == "XXX") {
 		list<Nodo*> listita = getNodos();
@@ -52,18 +53,23 @@ void Control::definirOpcion(string opcion, Nodo * act) {
 		Interfaz::limpiarPantalla();
 		Interfaz::mostrarOpcionNuevaPagina(0,0,act->toString());
 		cin>>respuesta;
-		crearPaginaApartirDeActual(respuesta, act);
+		nodo = graf->getPagina(respuesta);
+		if (!nodo)
+			crearPaginaApartirDeActual(respuesta, act);
+		else
+			darClick(nodo, act);
 	}
 
 	if(isDigit(opcion)) {
 		int opc = stoi(opcion);
-		graf->agregarClickAPagina(opc, act);
+		nodo = graf->getPaginaByNum(opc);
+		darClick(nodo, act);
 	}
 	if(isAcceder(opcion)){
 		opcion.pop_back(); //Para quitar la a
 		int opc = stoi(opcion);
-		Nodo * destino = graf->getPaginaByNum(opc);
-		accederDesdePaginaActual(destino->getNombre(),act);
+		nodo = graf->getPaginaByNum(opc);
+		darClick(nodo,act);
 	}
 }
 
@@ -78,8 +84,7 @@ list<Nodo*> Control::getNodos(){
 	return graf->getNodos();
 }
 
-void Control::accederDesdePaginaActual(string pagAcceder,Nodo * actual){ /////Checkear esto 
-	Nodo * nodoFuturo = getPagina(pagAcceder);
+void Control::darClick(Nodo* nodoFuturo, Nodo * actual){ /////Checkear esto 
 	if(nodoFuturo){
 		if(nodoFuturo->existeEntrante(actual)){
 			nodoFuturo->recibirClick(actual->getNombre());
