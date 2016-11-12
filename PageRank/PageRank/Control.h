@@ -35,7 +35,7 @@ public:
 	bool isAcceder(string);
 	Nodo* registrarPaginaNueva(string);
 	void mostrarListaPaginas();
-	void mostrarPaginaActualYLista(string, string);
+	void mostrarPaginaActualYLista(string, string, int, int);
 
 
 	~Control(void);

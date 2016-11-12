@@ -19,7 +19,7 @@ void Control::iniciarBuscador(){
 	Nodo* nodoAux;
 	while(activo) {
 		nodoAux = nodoActual;
-		mostrarPaginaActualYLista(nodoActual->toString(), nodoActual->getNombre());
+		mostrarPaginaActualYLista(nodoActual->toString(), nodoActual->getNombre(), nodoActual->getCantClicks(), nodoActual->getCantVecinos());
 		cin>>respuesta;
 		if(respuesta == "Z" || respuesta == "z")
 			activo = false;
@@ -187,7 +187,7 @@ void Control::darClick(Nodo* nodoFuturo, Nodo * actual){ /////Checkear esto
 			actual->enviarClick(nodoFuturo->getNombre());
 		}else{
 			actual->agregarNodo(nodoFuturo);
-			actual->enviarClick(nodoFuturo->getNombre());
+			//actual->enviarClick(nodoFuturo->getNombre());
 		}
 	}
 }
@@ -269,10 +269,12 @@ void Control::mostrarListaPaginas() {
 	Interfaz::plantillaPaginaInicio(ANCHO, ALTO, graf->mostrarGrafo());
 }
 
-void Control::mostrarPaginaActualYLista(string pagina, string respuesta) {
+void Control::mostrarPaginaActualYLista(string pagina, string respuesta, int clicksEnt, int paginasEnt) {
 	Interfaz::limpiarPantalla();
+	Interfaz::mostrarCantClicks(pagina, clicksEnt, paginasEnt);
 	Interfaz::plantillaPagina(ANCHO, ALTO, pagina, graf->mostrarGrafoSinPagActual(respuesta));
 }
+
 Control::~Control(void)
 {
 	delete graf;
