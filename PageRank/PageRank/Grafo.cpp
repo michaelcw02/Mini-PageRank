@@ -89,12 +89,14 @@ Nodo * Grafo::getPagina(string nom){
 }
 
 Nodo* Grafo::getPaginaByNum(int num, Nodo* nodoActual) {
-	list<Nodo*>::iterator d = nodos.begin();
-	for(int i = 0; i < num; i++, d++) {
-		if ((*d) == nodoActual)
-			d++;
-		if(i == num -1 && d != nodos.end())
-			return (*d);
+	list<Nodo*>::iterator ite = nodos.begin();
+	int i = 0;
+	while(ite != nodos.end()) {
+		if(i == num-1)
+			return (*ite);
+		if((*ite) != nodoActual)
+			i++;
+		ite++;
 	}
 	return NULL;
 }

@@ -12,7 +12,6 @@ void Control::iniciarBuscador(){
 	string pagFutura = " ";
 
 	nodoActual = procesoInicial();
-	cout<<nodoActual->toString();
 
 	if(!nodoActual)
 		activo = false;
@@ -39,7 +38,7 @@ Nodo* Control::procesoInicial() {
 	Interfaz::mostrarBanner();
 
 	do {
-		activo = false;
+		activo = true;
 		mostrarListaPaginas();
 		cin>>respuesta;
 		if(respuesta == "O" || respuesta == "o") {
@@ -49,17 +48,24 @@ Nodo* Control::procesoInicial() {
 				nodoActual = registrarPaginaNueva(respuesta);
 			} else
 				nodoActual = NULL;
+			activo = false;
 		}
 		if(isAcceder(respuesta)) {
 			respuesta.pop_back(); //Para quitar la a
 			int opc = stoi(respuesta);
 			nodoActual = graf->getPaginaByNum(opc, nodoActual);
-			darClick(nodoActual, nodoActual);
+			if(nodoActual)
+				activo = false;
+			else
+				activo = true;
 		}
 		if(isDigit(respuesta)) {
 			int opc = stoi(respuesta);
 			nodoActual = graf->getPaginaByNum(opc, nodoActual);
-			darClick(nodoActual, nodoActual);
+			if(nodoActual)
+				activo = false;
+			else
+				activo = true;
 		}
 		if(respuesta == "PR" || respuesta == "pr") {
 			pageRank();
