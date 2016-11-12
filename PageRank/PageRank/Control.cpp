@@ -26,11 +26,13 @@ void Control::iniciarBuscador(){
 			}
 			else{
 				do{
-				nodoActual = new Nodo(respuesta);
 				if(!getPagina(respuesta)){
 					nodoActual = new Nodo(respuesta);
 					registrarPagina(nodoActual);
+				}else{
+					nodoActual = getPagina(respuesta);
 				}
+
 				Interfaz::limpiarPantalla();
 				Interfaz::plantillaPagina(0, 0, nodoActual->toString(), graf->mostrarGrafoSinPagActual(respuesta));
 				cin>>respuesta;
@@ -50,11 +52,9 @@ void Control::definirOpcion(string opcion, Nodo * act,string & r) {
 	string respuesta;
 	if(opcion == "xxx" || opcion == "XXX") {
 		list<Nodo*> listita = getNodos();
-		list<Nodo*>::iterator ite = listita.end();
-		ite--;
+		list<Nodo*>::iterator ite = listita.begin();
 		while(ite != listita.end()) {
-			graf->setNoVisitados();
-			cout<<(*ite)->toString()<<"  -> "<<PageRanker::pageRank((*ite), NULL)<<endl;ite++;
+			cout<<(*ite)->toString()<<"  -> "<<PageRanker::pageRank((*ite), NULL)<<endl;ite++;graf->setNoVisitados(); ///Este era el problema
 		}
 	}
 	if(opcion == "N" || opcion == "n"){
