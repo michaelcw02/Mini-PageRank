@@ -12,13 +12,14 @@ public:
 	Interfaz(void);
 	static void gotoXY(int, int);
 	static void entornoPagina(int,int);
+	static void plantillaPaginaInicio(int, int, string);
 	static void plantillaPagina(int, int, string, string);
 	static void mostrarBanner();
 	static void mostrarPaginaActual(string);
 	static void mostrarListaPaginas(string, int, int&);
 	static void mostrarOpcionNuevaPagina(int,int,string);
 	static void paginaYaExistente(int,int);
-	static void mostrarPageRank(int,int);
+	static void mostrarPageRank(int, int, string);
 	static void limpiarPantalla();
 	~Interfaz(void);
 };

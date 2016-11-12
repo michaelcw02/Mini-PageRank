@@ -14,7 +14,7 @@ void Interfaz::gotoXY(int x, int y) {
 void Interfaz::mostrarBanner(){
 	system("color A");
 
-	int x = 15, y = 5;
+	int x = 35, y = 5;
 	
 	system("cls");
 	gotoXY(x, y++);	cout << "================================================= " << endl;
@@ -33,15 +33,34 @@ void Interfaz::mostrarBanner(){
 
 }
 
-void Interfaz::mostrarPageRank(int x, int y){
+void Interfaz::mostrarPageRank(int x, int y, string resultados){
+	
 	gotoXY(x, y++);	cout << "================================================= " << endl;
 	gotoXY(x, y++);	cout << "||         Page ranking de cada pagina         ||" << endl;
 	gotoXY(x, y++);	cout << "================================================= " << endl;
+	x = x + 2;
+	y++;	
+	int auxX = x;
+	int i = 1;
+	gotoXY(x-2, y); cout<<i++<<".";
+	for(int i = 0; i < resultados.length(); i++){
+		if(resultados[i] != '\n'){
+			gotoXY(x++,y);	cout<<resultados[i];
+		}else{
+			x = auxX;
+			y++;
+			gotoXY(x-2, y); cout<<i++<<".";
+		}
+	}
+	gotoXY(x-14, y+4);	cout << "Digite ENTER para comenzar..." << endl;
+	system("pause>nul");
+
 }
 
 
 void Interfaz::entornoPagina(int x, int y){
 
+	int auxY = y;
 	gotoXY(x, y++);	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|                  Digite la pagina hacia la que desea dirigirse               |" << endl;
@@ -61,33 +80,52 @@ void Interfaz::entornoPagina(int x, int y){
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
-	gotoXY(15,7); //Para que el teclado quede en la posicion de la cajita
+	gotoXY(x + 15, auxY + 7); //Para que el teclado quede en la posicion de la cajita
 }
 
 void Interfaz::mostrarPaginaActual(string pagina) {
 	int x = 25, y = 7;
 	gotoXY(x, y++); cout << "Estas en la pagina: " << pagina << endl;
 }
-
-void Interfaz::plantillaPagina(int x, int y,string name,string paginas){
+void Interfaz::plantillaPaginaInicio(int x, int y, string paginas){
 	gotoXY(x, y++);	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
-	gotoXY(x, y++);	cout << "|******************************************************************************|" << endl;
-	gotoXY(x, y++);	cout << "|Usted esta en la pagina:                                                      |" << endl;
-	gotoXY(x+26,y-1); cout<<name;
-	gotoXY(x, y++);	cout << "|******************************************************************************|" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
-	gotoXY(x, y++);	cout << "|Paginas a las que usted puede dirigirse:                                      |" << endl;
 	mostrarListaPaginas(paginas, x+4, y);
 	gotoXY(x, y++);	cout << "|";                                                     gotoXY(x+79, y);cout<<"|"<< endl;
 	gotoXY(x, y++);	cout << "|";                                                     gotoXY(x+79, y);cout<<"|"<< endl;
 	gotoXY(x, y++);	cout << "|Opciones:                                                                     |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
-	gotoXY(x, y++);	cout << "|- Presione el numero de la pagina para hacer un click.                        |" << endl;
-	gotoXY(x, y++);	cout << "|- Presione el numero de la pagina y seguido una 'a' para acceder a esta.      |" << endl;
-	gotoXY(x, y++);	cout << "|- Para visitar una pagina nueva presione la letra N                           |" << endl;
-	gotoXY(x, y++);	cout << "|- Digite z para salir                                                         |" << endl;
-	gotoXY(x, y++);	cout << "|- Digite 'PR' para ver el page rank de cada pagina.                           |" << endl;
+	gotoXY(x, y++);	cout << "|-Presione el numero de la pagina seguido de una 'a' para acceder a ella. '1a' |" << endl;
+	gotoXY(x, y++);	cout << "|-Para acceder a una pagina nueva, presione la letra 'O'                       |" << endl;
+	gotoXY(x, y++);	cout << "|-Digite 'PR' para ver el page rank de cada pagina.                            |" << endl;
+	gotoXY(x, y++);	cout << "|-Digite 'Z' para salir                                                        |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|Opcion:                                                                       |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+	gotoXY(x+3,y-2);////Para el teclado
+}
+
+void Interfaz::plantillaPagina(int x, int y,string name,string paginas){
+	gotoXY(x, y++);	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|******************************************************************************|" << endl;
+	gotoXY(x, y++);	cout << "|Usted se encuentra en:                                                        |" << endl;
+	gotoXY(x+24,y-1); cout<<name;
+	gotoXY(x, y++);	cout << "|******************************************************************************|" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	mostrarListaPaginas(paginas, x+4, y);
+	gotoXY(x, y++);	cout << "|";                                                     gotoXY(x+79, y);cout<<"|"<< endl;
+	gotoXY(x, y++);	cout << "|";                                                     gotoXY(x+79, y);cout<<"|"<< endl;
+	gotoXY(x, y++);	cout << "|Opciones:                                                                     |" << endl;
+	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
+	gotoXY(x, y++);	cout << "|-Presione el numero de la pagina para hacer un click.                         |" << endl;
+	gotoXY(x, y++);	cout << "|-Presione el numero de la pagina seguido de una 'a' para acceder a ella. '1a' |" << endl;
+	gotoXY(x, y++);	cout << "|-Para acceder a una pagina nueva a partir de esta, presione la letra 'N'      |" << endl;
+	gotoXY(x, y++);	cout << "|-Para acceder a una pagina nueva no relacionada a esta, presione la letra 'O' |" << endl;
+	gotoXY(x, y++);	cout << "|-Digite 'PR' para ver el page rank de cada pagina.                            |" << endl;
+	gotoXY(x, y++);	cout << "|-Digite 'Z' para salir.                                                       |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|Opcion:                                                                       |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
@@ -99,6 +137,7 @@ void Interfaz::mostrarListaPaginas(string listas, int x, int &y) {
 	
 	int xStart = x;
 	string list = listas;
+	gotoXY(x-4, y++);cout << "|Paginas a las que usted puede dirigirse:                                      |" << endl;
 	gotoXY(x-4, y);	cout << "|"; gotoXY(x+75, y);cout<<"|"<< endl;
 	for(int i = 0; i < listas.length(); i++){
 		if(listas[i] != '\n'){
@@ -111,7 +150,8 @@ void Interfaz::mostrarListaPaginas(string listas, int x, int &y) {
 	}
 }
 
-void Interfaz::mostrarOpcionNuevaPagina(int x,int y,string name) {
+void Interfaz::mostrarOpcionNuevaPagina(int x, int y, string name) {
+	int auxY = y;
 	gotoXY(x, y++);	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|----------------------------------------------------------------------------|" << endl;
@@ -129,7 +169,7 @@ void Interfaz::mostrarOpcionNuevaPagina(int x,int y,string name) {
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
-	gotoXY(15,9); //Para que el teclado quede en la posicion de la cajita
+	gotoXY(x + 15, auxY + 9); //Para que el teclado quede en la posicion de la cajita
 
 }
 

@@ -2,6 +2,12 @@
 #include "Grafo.h"
 #include "PageRanker.h"
 #include "Interfaz.h"
+
+
+static const int ALTO = 2;
+static const int ANCHO = 20;
+static const string NONE = "-NINGUNO-";
+
 class Control
 {
 private:
@@ -9,6 +15,7 @@ private:
 public:
 	Control(void);
 	void iniciarBuscador();
+	Nodo* procesoInicial();
 	void registrarPagina(Nodo * n);
 	void agregarDesde(Nodo * n); ///Agrega un nodo a outbounds desde una pagina actual
 	bool paginaExistente(string);
@@ -16,13 +23,21 @@ public:
 	Nodo * getPagina(string);
 	string mostrarHistorial();
 	string paginasRecientes();
-	void definirOpcion(string, Nodo *,string&);
 	void guardar();
 	void recuperarDatos();
+	Nodo* desarrollarOpcion(string, Nodo*);
+	void pageRank();
+	void desarrollarOpcion(string, Nodo *,string&);
 	void crearPaginaApartirDeActual(string,	Nodo*);
 	void darClick (Nodo*, Nodo *); //Se esta en una pagina y se quiere ir a otra 
 	bool isDigit(string);
 	bool isAcceder(string);
+
+	Nodo* registrarPaginaNueva(string);
+	void mostrarListaPaginas();
+	void mostrarPaginaActualYLista(string, string);
+
+
 	~Control(void);
 };
 
