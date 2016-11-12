@@ -60,7 +60,7 @@ void Nodo::agregarNodo(Nodo * n){
 	if(ite != outbound.end())
 		ite->second++;
 	else
-		outbound.insert(Map::value_type(n,1));
+		outbound.insert(Map::value_type(n,0));
 }
 
 bool Nodo::enviarClick(string nom) {

@@ -191,6 +191,7 @@ void Control::darClick(Nodo* nodoFuturo, Nodo * actual){ /////Checkear esto
 			actual->enviarClick(nodoFuturo->getNombre());
 		}else{
 			actual->agregarNodo(nodoFuturo);
+			actual->enviarClick(nodoFuturo->getNombre());
 		}
 	}
 }
