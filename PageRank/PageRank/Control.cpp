@@ -168,12 +168,14 @@ bool Control::isDigit(string opcion) {
 
 bool Control::isAcceder(string opcion) {
 	string opc;
-	for(int i = 0; i < opcion.length()-1; i++)
-		opc.push_back(opcion[i]);
-	bool isNumber = isDigit(opc);
-	if(isNumber)
-		if (opcion[opcion.length()-1] == 'a' || opcion[opcion.length()-1] == 'A')
-			return true;
+	if(opcion.length() > 1) {
+		for(int i = 0; i < opcion.length()-1; i++)
+			opc.push_back(opcion[i]);
+		bool isNumber = isDigit(opc);
+		if(isNumber)
+			if (opcion[opcion.length()-1] == 'a' || opcion[opcion.length()-1] == 'A')
+				return true;
+	}
 	return false;
 }
 
