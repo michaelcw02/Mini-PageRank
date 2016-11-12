@@ -56,7 +56,11 @@ void Nodo::setNoVisitados() {
 
 //VECINOS SALIENTES...
 void Nodo::agregarNodo(Nodo * n){
-	outbound.insert(Map::value_type(n,1));
+	Map::iterator ite = outbound.find(n);
+	if(ite != outbound.end())
+		ite->second++;
+	else
+		outbound.insert(Map::value_type(n,1));
 }
 
 bool Nodo::enviarClick(string nom) {
@@ -131,14 +135,19 @@ int Nodo::getCantClicks() {
 	return cantClicks;
 }
 
-bool Nodo::existeSaliente(Nodo * ne){
-	mapIterator = outbound.begin();
-	while(mapIterator != outbound.end()){
-		if(mapIterator->first->getNombre() == ne->getNombre())
-			return true;
-		mapIterator++;
-	}
+bool Nodo::existeSaliente(Nodo * nodo){
+	mapIterator = outbound.find(nodo);
+	if(mapIterator != outbound.end())
+		return true;
 	return false;
+
+	//mapIterator = outbound.begin();
+	//while(mapIterator != outbound.end()){
+	//	if(mapIterator->first->getNombre() == ne->getNombre())
+	//		return true;
+	//	mapIterator++;
+	//}
+	//return false;
 }
 
 bool Nodo::existeEntrante(Nodo * ne){

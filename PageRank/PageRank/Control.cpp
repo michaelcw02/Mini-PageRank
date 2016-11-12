@@ -275,6 +275,7 @@ void Control::mostrarListaPaginas() {
 void Control::mostrarPaginaActualYLista(string pagina, string respuesta, int clicksEnt, int paginasEnt) {
 	graf->actualizarPorRank(obtenerRank());
 	Interfaz::limpiarPantalla();
+	cout<<graf->getNodos().size();
 	Interfaz::mostrarCantClicks(pagina, clicksEnt, paginasEnt);
 	Interfaz::plantillaPagina(ANCHO, ALTO, pagina, graf->mostrarGrafoSinPagActual(respuesta));
 }
