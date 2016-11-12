@@ -26,21 +26,23 @@ void Control::iniciarBuscador(){
 			}
 			else{
 				do{
-				if(!getPagina(respuesta)){
+				if(!getPagina(respuesta) && respuesta != " "){ //El respuesta != " " es para no crear nodos de las opciones disponibles
 					nodoActual = new Nodo(respuesta);
 					registrarPagina(nodoActual);
 				}else{
-					nodoActual = getPagina(respuesta);
+					if(respuesta != " ")
+						nodoActual = getPagina(respuesta);
 				}
 
 				Interfaz::limpiarPantalla();
 				Interfaz::plantillaPagina(0, 0, nodoActual->toString(), graf->mostrarGrafoSinPagActual(respuesta));
 				cin>>respuesta;
 				definirOpcion(respuesta, nodoActual,respuesta);
-				cout<<nodoActual->getCantClicks();
+				cout<<endl<<"Cantidad de clicks hacia:"<<respuesta<<nodoActual->getCantClicks();
 				system("pause");
 				}
 				while(respuesta != "z" && respuesta != "Z");
+				activo = (respuesta == "z" || respuesta == "Z")?false:true;
 			}
 		}
 	while(activo);
@@ -50,12 +52,17 @@ void Control::iniciarBuscador(){
 void Control::definirOpcion(string opcion, Nodo * act,string & r) {
 	Nodo* nodo;
 	string respuesta;
-	if(opcion == "xxx" || opcion == "XXX") {
+	if(opcion == "PR" || opcion == "pr") {
 		list<Nodo*> listita = getNodos();
+		Interfaz::limpiarPantalla();
+		Interfaz::mostrarPageRank(10,0);
 		list<Nodo*>::iterator ite = listita.begin();
 		while(ite != listita.end()) {
-			cout<<(*ite)->toString()<<"  -> "<<PageRanker::pageRank((*ite), NULL)<<endl;ite++;graf->setNoVisitados(); ///Este era el problema
+			cout<<(*ite)->getNombre()<<" ------> "<<PageRanker::pageRank((*ite), NULL)<<endl;ite++;graf->setNoVisitados(); 
 		}
+		r = " ";
+		cout<<"Digite ENTER para volver a la pagina anterior."<<endl;
+		system("pause");
 	}
 	if(opcion == "N" || opcion == "n"){
 		Interfaz::limpiarPantalla();
@@ -73,18 +80,19 @@ void Control::definirOpcion(string opcion, Nodo * act,string & r) {
 		int opc = stoi(opcion);
 		nodo = graf->getPaginaByNum(opc, act);
 		darClick(nodo, act);
+		r = " ";
 	}
 	if(isAcceder(opcion)){
 		opcion.pop_back(); //Para quitar la a
 		int opc = stoi(opcion);
 		nodo = graf->getPaginaByNum(opc, act);
 		darClick(nodo,act);
+		r = " ";
 	}
 }
 
 void Control::crearPaginaApartirDeActual(string np, Nodo * actual){
 	Nodo * nnodo = new Nodo(np);
-	//registrarPagina(nnodo); //Inserto al Grafo
 	actual->agregarNodo(nnodo); //Lo agregamos a los salientes
 	nnodo->agregarEntranda(actual);
 	registrarPagina(nnodo);

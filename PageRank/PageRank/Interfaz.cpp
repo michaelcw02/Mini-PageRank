@@ -33,6 +33,12 @@ void Interfaz::mostrarBanner(){
 
 }
 
+void Interfaz::mostrarPageRank(int x, int y){
+	gotoXY(x, y++);	cout << "================================================= " << endl;
+	gotoXY(x, y++);	cout << "||         Page ranking de cada pagina         ||" << endl;
+	gotoXY(x, y++);	cout << "================================================= " << endl;
+}
+
 
 void Interfaz::entornoPagina(int x, int y){
 
@@ -81,6 +87,7 @@ void Interfaz::plantillaPagina(int x, int y,string name,string paginas){
 	gotoXY(x, y++);	cout << "|- Presione el numero de la pagina y seguido una 'a' para acceder a esta.      |" << endl;
 	gotoXY(x, y++);	cout << "|- Para visitar una pagina nueva presione la letra N                           |" << endl;
 	gotoXY(x, y++);	cout << "|- Digite z para salir                                                         |" << endl;
+	gotoXY(x, y++);	cout << "|- Digite 'PR' para ver el page rank de cada pagina.                           |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|Opcion:                                                                       |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
