@@ -71,6 +71,7 @@ Nodo* Control::procesoInicial() {
 			pageRank();
 			activo = true;
 		}
+		if(respuesta == "Z" || respuesta == "z"){activo = false;}
 	} while(activo);
 
 	return nodoActual;
