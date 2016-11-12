@@ -90,6 +90,9 @@ void Nodo::agregarEntranda(Nodo * node) {
 void Nodo::recibirClick(Nodo * nom) {
 	agregarEntranda(nom);
 }
+int Nodo::getCantVecinos() {
+	return inbound.size();
+}
 
 void Nodo::guardar(ofstream & guard){
 	guard<<nombre<<endl;
