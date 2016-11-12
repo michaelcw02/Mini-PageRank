@@ -20,6 +20,7 @@ public:
 	static void mostrarOpcionNuevaPagina(int,int,string);
 	static void paginaYaExistente(int,int);
 	static void mostrarPageRank(int, int, string);
+	static void mostrarCantClicks(string, int, int);
 	static void limpiarPantalla();
 	~Interfaz(void);
 };
