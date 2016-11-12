@@ -65,7 +65,7 @@ bool Nodo::enviarClick(string nom) {
 		string nombre = (*outIterator).first->getNombre();
 		if(nombre == nom) {
 			(*outIterator).second++;
-			(*outIterator).first->recibirClick(this->getNombre());
+			(*outIterator).first->recibirClick(this);
 			return true;
 		}
 		outIterator++;
@@ -83,29 +83,12 @@ bool Nodo::enviarClick(Nodo* nodo) {
 	return false;
 }
 
-bool Nodo::recibirClick(string nom){
-	/*Map::iterator inIterator = inbound.begin();
-	while(inIterator != inbound.end()) {
-		string nombre = (*inIterator).first->getNombre();
-		if(nombre == nom) {
-			(*inIterator).second++;
-			//(*outIterator).first->recibirClick(this);
-			return true;	
-		}
-	}
-	return false;*/
-	return true;
-}
-
 //VECINOS ENTRANTES...
 void Nodo::agregarEntranda(Nodo * node) {
 	inbound.insert(MapBool::value_type(node, false));
 }
 void Nodo::recibirClick(Nodo * nom) {
-	/*Map::iterator inIterator;
-	inIterator = inbound.find(nom);
-	if(inIterator != inbound.end())
-		inIterator->second++;*/
+	agregarEntranda(nom);
 }
 
 void Nodo::guardar(ofstream & guard){

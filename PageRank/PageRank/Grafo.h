@@ -20,6 +20,7 @@ public:
 	string mostrarGrafoSinPagActual(string);
 	list<Nodo*> getNodos();
 	string mostrarGrafo();
+	void actualizarPorRank(list<Nodo*>);
 	~Grafo(void);
 };
 

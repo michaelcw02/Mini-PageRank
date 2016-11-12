@@ -39,6 +39,7 @@ Nodo* Control::procesoInicial() {
 
 	do {
 		activo = true;
+		graf->actualizarPorRank(obtenerRank());
 		mostrarListaPaginas();
 		cin>>respuesta;
 		if(respuesta == "O" || respuesta == "o") {
@@ -122,16 +123,50 @@ Nodo* Control::desarrollarOpcion(string respuesta, Nodo* nodoActual) {
 }
 
 void Control::pageRank() {
-	stringstream s;
+	Interfaz::limpiarPantalla();
+	typedef  multimap < double, Nodo*, std::less<double>> Mapr; 
+	Mapr ranking;
 	list<Nodo*> paginas = getNodos();
+	list<Nodo*> paginasOrdenadas = list<Nodo*>();
 	list<Nodo*>::iterator ite = paginas.begin();
 	while(ite != paginas.end()) {
-		s << " " << (*ite)->getNombre()<< " ------> " << PageRanker::pageRank((*ite), NULL) << endl;
+		ranking.insert(Mapr::value_type(PageRanker::pageRank(*ite,NULL),*ite));
 		ite++;
 		graf->setNoVisitados(); 
 	}
-	Interfaz::limpiarPantalla();
-	Interfaz::mostrarPageRank(35, 5, s.str());
+	Mapr::iterator r = ranking.end();
+	r--;
+	while(r != ranking.begin()){
+		cout<<(r)->second->getNombre()<<"---->"<<r->first<<endl;
+		paginasOrdenadas.push_back(r->second);
+		r--;
+	}
+	cout<<(r)->second->getNombre()<<"---->"<<r->first<<endl;
+	paginasOrdenadas.push_back(r->second);
+	system("pause");
+}
+
+list<Nodo*> Control::obtenerRank(){
+	typedef  multimap < double, Nodo*, std::less<double>> Mapr; 
+	Mapr ranking;
+	list<Nodo*> paginas = getNodos();
+	list<Nodo*> paginasOrdenadas = list<Nodo*>();
+	list<Nodo*>::iterator ite = paginas.begin();
+	while(ite != paginas.end()) {
+		ranking.insert(Mapr::value_type(PageRanker::pageRank(*ite,NULL),*ite));
+		ite++;
+		graf->setNoVisitados(); 
+	}
+	Mapr::iterator r = ranking.end();
+	if(r != ranking.begin()){
+		r--;
+		while(r != ranking.begin()){
+			paginasOrdenadas.push_back(r->second);
+			r--;
+		}
+	paginasOrdenadas.push_back(r->second);
+	}
+	return paginasOrdenadas;
 }
 
 
@@ -211,7 +246,9 @@ void Control::guardar(){
 
 void Control::recuperarDatos(){
 	ifstream entrada("PageRank.txt");
-	graf = new Grafo(entrada);
+	if(entrada.is_open()){
+		graf = new Grafo(entrada);
+	}
 	entrada.close();
 }
 
@@ -226,10 +263,12 @@ Nodo* Control::registrarPaginaNueva(string pagina) {
 	}
 	return nodo;
 }
+
 void Control::mostrarListaPaginas() {
 	Interfaz::limpiarPantalla();
 	Interfaz::plantillaPaginaInicio(ANCHO, ALTO, graf->mostrarGrafo());
 }
+
 void Control::mostrarPaginaActualYLista(string pagina, string respuesta) {
 	Interfaz::limpiarPantalla();
 	Interfaz::plantillaPagina(ANCHO, ALTO, pagina, graf->mostrarGrafoSinPagActual(respuesta));

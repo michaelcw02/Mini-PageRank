@@ -42,7 +42,6 @@ public:
 	//VECINOS ENTRANTES....
 	void agregarEntranda(Nodo*);
 	void recibirClick(Nodo*);
-	bool recibirClick(string);
 	int getCantVecinos();
 	bool existeEntrante(Nodo*);
 

@@ -52,6 +52,11 @@ Grafo::Grafo(ifstream & datos)
 	}
 }
 
+void Grafo::actualizarPorRank(list<Nodo*> l){
+	nodos = l;
+
+}
+
 void Grafo::agregar(Nodo * n){
 	nodos.push_back(n);
 }

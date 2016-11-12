@@ -27,12 +27,12 @@ public:
 	void recuperarDatos();
 	Nodo* desarrollarOpcion(string, Nodo*);
 	void pageRank();
+	list<Nodo*> obtenerRank();
 	void desarrollarOpcion(string, Nodo *,string&);
 	void crearPaginaApartirDeActual(string,	Nodo*);
 	void darClick (Nodo*, Nodo *); //Se esta en una pagina y se quiere ir a otra 
 	bool isDigit(string);
 	bool isAcceder(string);
-
 	Nodo* registrarPaginaNueva(string);
 	void mostrarListaPaginas();
 	void mostrarPaginaActualYLista(string, string);
