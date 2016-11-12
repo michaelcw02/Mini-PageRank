@@ -3,6 +3,7 @@
 
 Control::Control(void) {
 	graf = new Grafo();
+	recuperarDatos();
 }
 
 void Control::iniciarBuscador(){
@@ -46,6 +47,7 @@ void Control::iniciarBuscador(){
 			}
 		}
 	while(activo);
+	guardar();
 }
 
 
@@ -161,6 +163,18 @@ string Control::paginasRecientes(){
 	stringstream s;
 	s<<graf->mostrarGrafo()<<endl;
 	return s.str();
+}
+
+void Control::guardar(){
+	ofstream salida("PageRank.txt");
+	graf->guardarGrafo(salida);
+	salida.close();
+}
+
+void Control::recuperarDatos(){
+	ifstream entrada("PageRank.txt");
+	graf = new Grafo(entrada);
+	entrada.close();
 }
 
 Control::~Control(void)

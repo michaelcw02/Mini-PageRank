@@ -17,6 +17,8 @@ public:
 	string mostrarHistorial();
 	string paginasRecientes();
 	void definirOpcion(string, Nodo *,string&);
+	void guardar();
+	void recuperarDatos();
 	void crearPaginaApartirDeActual(string,	Nodo*);
 	void darClick (Nodo*, Nodo *); //Se esta en una pagina y se quiere ir a otra 
 	bool isDigit(string);

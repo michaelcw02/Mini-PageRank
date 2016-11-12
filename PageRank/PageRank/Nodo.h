@@ -4,6 +4,7 @@
 #include <sstream>
 #include <list>
 #include <map>
+#include <fstream>
 
 using namespace std;
 
@@ -46,6 +47,9 @@ public:
 	bool existeEntrante(Nodo*);
 
 	int getCantClicks();
+	void guardar(ofstream&);
+	void cargarEntrante(Nodo*,int);
+	void cargarSalida(Nodo*,int);
 
 	~Nodo(void);
 };

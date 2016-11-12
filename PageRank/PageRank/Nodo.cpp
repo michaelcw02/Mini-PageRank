@@ -107,6 +107,34 @@ void Nodo::recibirClick(Nodo * nom) {
 		inIterator->second++;*/
 }
 
+void Nodo::guardar(ofstream & guard){
+	guard<<nombre<<endl;
+	guard<<"Entrantes:"<<endl;
+	MapBool::iterator it = inbound.begin();
+	while(it != inbound.end()){
+		guard<<"["+(it)->first->getNombre()+":";
+		guard<<(it)->second;guard<<"]"<<endl;
+		it++;
+	}
+	guard<<"Salientes:"<<endl;
+	mapIterator = outbound.begin();
+	while(mapIterator != outbound.end()){
+		guard<<"["+(mapIterator)->first->getNombre()+":";
+		guard<<(mapIterator)->second;guard<<"]"<<endl;
+		mapIterator++;
+	}
+	guard<<nombre + "FINAL"<<endl;
+
+}
+
+void Nodo::cargarEntrante(Nodo*n ,int e){
+	inbound.insert(MapBool::value_type(n, e));
+}
+	
+void Nodo::cargarSalida(Nodo* n,int c){
+	outbound.insert(Map::value_type(n,c));
+}
+
 
 int Nodo::getCantClicks() {
 	mapIterator = outbound.begin();
