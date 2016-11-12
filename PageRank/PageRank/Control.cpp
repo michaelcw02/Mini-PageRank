@@ -16,36 +16,57 @@ void Control::iniciarBuscador(){
 
 	if(!nodoActual)
 		activo = false;
-
+	
+	Nodo* nodoAux;
 	while(activo) {
+		nodoAux = nodoActual;
 		mostrarPaginaActualYLista(nodoActual->toString(), nodoActual->getNombre());
 		cin>>respuesta;
 		if(respuesta == "Z" || respuesta == "z")
 			activo = false;
 		nodoActual = desarrollarOpcion(respuesta, nodoActual);
+		if(!nodoActual)
+			nodoActual = nodoAux;
 	}
 	guardar();
 }
 
 Nodo* Control::procesoInicial() {
+	bool activo;
 	string respuesta = " ";
 	Nodo* nodoActual = NULL;
 
 	Interfaz::mostrarBanner();
-	
-	mostrarListaPaginas();
-	cin>>respuesta;
-	if(respuesta == "O" || respuesta == "o") {
-		Interfaz::entornoPagina(ANCHO, ALTO);
+
+	do {
+		activo = false;
+		mostrarListaPaginas();
 		cin>>respuesta;
-		if (respuesta != "0") {
-			nodoActual = registrarPaginaNueva(respuesta);
-		} else
-			nodoActual = NULL;
-	}
-	if(isAcceder(respuesta)) {
-		nodoActual = graf->getPagina(respuesta);
-	}
+		if(respuesta == "O" || respuesta == "o") {
+			Interfaz::entornoPagina(ANCHO, ALTO);
+			cin>>respuesta;
+			if (respuesta != "0") {
+				nodoActual = registrarPaginaNueva(respuesta);
+			} else
+				nodoActual = NULL;
+		}
+		if(isAcceder(respuesta)) {
+			respuesta.pop_back(); //Para quitar la a
+			int opc = stoi(respuesta);
+			nodoActual = graf->getPaginaByNum(opc, nodoActual);
+			darClick(nodoActual, nodoActual);
+		}
+		if(isDigit(respuesta)) {
+			int opc = stoi(respuesta);
+			nodoActual = graf->getPaginaByNum(opc, nodoActual);
+			darClick(nodoActual, nodoActual);
+		}
+		if(respuesta == "PR" || respuesta == "pr") {
+			pageRank();
+			activo = true;
+		}
+	} while(activo);
+
 	return nodoActual;
 }
 
@@ -55,14 +76,16 @@ Nodo* Control::desarrollarOpcion(string respuesta, Nodo* nodoActual) {
 	if(isDigit(respuesta)) {
 		int opc = stoi(respuesta);
 		nodo = graf->getPaginaByNum(opc, nodoActual);
-		darClick(nodo, nodoActual);
+		if(nodo)
+			darClick(nodo, nodoActual);
 		nodo = nodoActual;
 	}
 	if(isAcceder(respuesta)) {
 		respuesta.pop_back(); //Para quitar la a
 		int opc = stoi(respuesta);
 		nodo = graf->getPaginaByNum(opc, nodoActual);
-		darClick(nodo, nodoActual);
+		if(nodo)
+			darClick(nodo, nodoActual);
 	}
 	if(respuesta == "PR" || respuesta == "pr") {
 		pageRank();
@@ -93,11 +116,10 @@ Nodo* Control::desarrollarOpcion(string respuesta, Nodo* nodoActual) {
 
 void Control::pageRank() {
 	stringstream s;
-	string result;
 	list<Nodo*> paginas = getNodos();
 	list<Nodo*>::iterator ite = paginas.begin();
 	while(ite != paginas.end()) {
-		s << " " << (*ite)->getNombre( )<< " ------> " << PageRanker::pageRank((*ite), NULL) << endl;
+		s << " " << (*ite)->getNombre()<< " ------> " << PageRanker::pageRank((*ite), NULL) << endl;
 		ite++;
 		graf->setNoVisitados(); 
 	}
@@ -119,12 +141,6 @@ list<Nodo*> Control::getNodos(){
 
 void Control::darClick(Nodo* nodoFuturo, Nodo * actual){ /////Checkear esto 
 	if(nodoFuturo){
-		if(nodoFuturo->existeEntrante(actual)){
-			nodoFuturo->recibirClick(actual->getNombre());
-		}else{
-			nodoFuturo->agregarEntranda(actual);
-			nodoFuturo->recibirClick(actual->getNombre());
-		}
 		if(actual->existeSaliente(nodoFuturo)){
 			actual->enviarClick(nodoFuturo->getNombre());
 		}else{

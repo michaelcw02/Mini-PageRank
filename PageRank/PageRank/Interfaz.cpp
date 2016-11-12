@@ -28,8 +28,8 @@ void Interfaz::mostrarBanner(){
 	gotoXY(x, y++);	cout << "||                                             ||" << endl;
 	gotoXY(x, y++);	cout << "================================================= " << endl;
 
-	gotoXY(x-14, y+4);	cout << "Digite ENTER para comenzar..." << endl;
-	cin.get();
+	gotoXY(x-8, y+4);	cout << "Digite ENTER para comenzar..." << endl;
+	system("pause>nul");
 
 }
 
@@ -38,21 +38,23 @@ void Interfaz::mostrarPageRank(int x, int y, string resultados){
 	gotoXY(x, y++);	cout << "================================================= " << endl;
 	gotoXY(x, y++);	cout << "||         Page ranking de cada pagina         ||" << endl;
 	gotoXY(x, y++);	cout << "================================================= " << endl;
-	x = x + 2;
+	x = x + 4;
 	y++;	
 	int auxX = x;
-	int i = 1;
-	gotoXY(x-2, y); cout<<i++<<".";
+	int j = 1;
+	gotoXY(x-2, y); cout<<j++<<". ";
 	for(int i = 0; i < resultados.length(); i++){
 		if(resultados[i] != '\n'){
 			gotoXY(x++,y);	cout<<resultados[i];
 		}else{
 			x = auxX;
 			y++;
-			gotoXY(x-2, y); cout<<i++<<".";
+			if(i != resultados.length() -1) {
+			gotoXY(x-2, y); cout<<j++<<". ";
+			}
 		}
 	}
-	gotoXY(x-14, y+4);	cout << "Digite ENTER para seguir..." << endl;
+	gotoXY(x-4, y+4);	cout << "Digite ENTER para seguir..." << endl;
 	system("pause>nul");
 
 }

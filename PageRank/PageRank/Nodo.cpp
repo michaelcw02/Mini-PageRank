@@ -68,6 +68,7 @@ bool Nodo::enviarClick(string nom) {
 			(*outIterator).first->recibirClick(this->getNombre());
 			return true;
 		}
+		outIterator++;
 	}
 	return false;
 }
