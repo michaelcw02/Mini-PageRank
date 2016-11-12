@@ -176,8 +176,13 @@ void Interfaz::mostrarOpcionNuevaPagina(int x, int y, string name) {
 }
 
 void Interfaz::mostrarCantClicks(string nombre, int clicksEntrantes, int nodosEntrantes) {
-	int x = 30;
-	gotoXY(x, 0); cout << "La pagina " << nombre << " recibe " << clicksEntrantes << " clicks de " << nodosEntrantes << " paginas."<<endl;
+	int x = 20;
+	stringstream s;
+	string name;
+	for (int i = 0; i < nombre.length() - 1; i++)
+		name.push_back(nombre[i]);
+	s << "La pagina " << name << " ha hecho " << clicksEntrantes << " clicks hacia " << nodosEntrantes << " paginas distintas."<<endl;
+	gotoXY(x, 0); cout<<s.str();
 }
 
 void Interfaz::limpiarPantalla(){

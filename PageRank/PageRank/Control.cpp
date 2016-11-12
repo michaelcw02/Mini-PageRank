@@ -124,26 +124,30 @@ Nodo* Control::desarrollarOpcion(string respuesta, Nodo* nodoActual) {
 
 void Control::pageRank() {
 	Interfaz::limpiarPantalla();
+	stringstream s;
 	typedef  multimap < double, Nodo*, std::less<double>> Mapr; 
 	Mapr ranking;
 	list<Nodo*> paginas = getNodos();
 	list<Nodo*> paginasOrdenadas = list<Nodo*>();
 	list<Nodo*>::iterator ite = paginas.begin();
+
 	while(ite != paginas.end()) {
-		ranking.insert(Mapr::value_type(PageRanker::pageRank(*ite,NULL),*ite));
+		ranking.insert(Mapr::value_type(PageRanker::pageRank(*ite,NULL), *ite));
 		ite++;
 		graf->setNoVisitados(); 
 	}
+
 	Mapr::iterator r = ranking.end();
 	r--;
 	while(r != ranking.begin()){
-		cout<<(r)->second->getNombre()<<"---->"<<r->first<<endl;
+		s << " " << (r)->second->getNombre() << " ------> " << r->first << endl;
 		paginasOrdenadas.push_back(r->second);
 		r--;
 	}
-	cout<<(r)->second->getNombre()<<"---->"<<r->first<<endl;
+	s << " " << (r)->second->getNombre() << " ------> " << r->first << endl;
 	paginasOrdenadas.push_back(r->second);
-	system("pause");
+	Interfaz::limpiarPantalla();
+	Interfaz::mostrarPageRank(35, 5, s.str());
 }
 
 list<Nodo*> Control::obtenerRank(){
@@ -187,7 +191,6 @@ void Control::darClick(Nodo* nodoFuturo, Nodo * actual){ /////Checkear esto
 			actual->enviarClick(nodoFuturo->getNombre());
 		}else{
 			actual->agregarNodo(nodoFuturo);
-			//actual->enviarClick(nodoFuturo->getNombre());
 		}
 	}
 }
@@ -270,6 +273,7 @@ void Control::mostrarListaPaginas() {
 }
 
 void Control::mostrarPaginaActualYLista(string pagina, string respuesta, int clicksEnt, int paginasEnt) {
+	graf->actualizarPorRank(obtenerRank());
 	Interfaz::limpiarPantalla();
 	Interfaz::mostrarCantClicks(pagina, clicksEnt, paginasEnt);
 	Interfaz::plantillaPagina(ANCHO, ALTO, pagina, graf->mostrarGrafoSinPagActual(respuesta));

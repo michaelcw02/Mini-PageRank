@@ -91,7 +91,7 @@ void Nodo::recibirClick(Nodo * nom) {
 	agregarEntranda(nom);
 }
 int Nodo::getCantVecinos() {
-	return inbound.size();
+	return outbound.size();
 }
 
 void Nodo::guardar(ofstream & guard){
