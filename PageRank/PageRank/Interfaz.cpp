@@ -52,7 +52,7 @@ void Interfaz::mostrarPageRank(int x, int y, string resultados){
 			gotoXY(x-2, y); cout<<i++<<".";
 		}
 	}
-	gotoXY(x-14, y+4);	cout << "Digite ENTER para comenzar..." << endl;
+	gotoXY(x-14, y+4);	cout << "Digite ENTER para seguir..." << endl;
 	system("pause>nul");
 
 }

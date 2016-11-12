@@ -104,51 +104,7 @@ void Control::pageRank() {
 	Interfaz::limpiarPantalla();
 	Interfaz::mostrarPageRank(35, 5, s.str());
 }
-//
-//void Control::desarrollarOpcion(string opcion, Nodo * act, string &r) {
-//	Nodo* nodo;
-//	string respuesta;
-//	//OPCION PAGE RANK
-//	if(opcion == "PR" || opcion == "pr") {
-//		list<Nodo*> listita = getNodos();
-//		Interfaz::limpiarPantalla();
-//		Interfaz::mostrarPageRank(10,0);
-//		list<Nodo*>::iterator ite = listita.begin();
-//		while(ite != listita.end()) {
-//			cout<<(*ite)->getNombre()<<" ------> "<<PageRanker::pageRank((*ite), NULL)<<endl;ite++;graf->setNoVisitados(); 
-//		}
-//		r = " ";
-//		cout<<"Digite ENTER para volver a la pagina anterior."<<endl;
-//		system("pause");
-//	}
-//	//OPCION NUEVA PAGINA A PARTIR DE LA PAGINA ACTUAL
-//	if(opcion == "N" || opcion == "n"){
-//		Interfaz::limpiarPantalla();
-//		Interfaz::mostrarOpcionNuevaPagina(ANCHO, ALTO, act->toString());
-//		cin>>respuesta;
-//		r = respuesta;
-//		nodo = graf->getPagina(respuesta);
-//		if (!nodo)
-//			crearPaginaApartirDeActual(respuesta, act);
-//		else
-//			darClick(nodo, act);
-//	}
-//	//OPCION DAR CLICK A PAGINA
-//	if(isDigit(opcion)) {
-//		int opc = stoi(opcion);
-//		nodo = graf->getPaginaByNum(opc, act);
-//		darClick(nodo, act);
-//		r = " ";
-//	}
-//	//OPCION DAR CLICK Y ACCEDER A PAGINA
-//	if(isAcceder(opcion)){
-//		opcion.pop_back(); //Para quitar la a
-//		int opc = stoi(opcion);
-//		nodo = graf->getPaginaByNum(opc, act);
-//		darClick(nodo,act);
-//		r = " ";
-//	}
-//}
+
 
 void Control::crearPaginaApartirDeActual(string np, Nodo * actual){
 	Nodo * nnodo = new Nodo(np);
