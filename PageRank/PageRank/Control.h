@@ -36,7 +36,7 @@ public:
 	Nodo* registrarPaginaNueva(string);
 	void mostrarListaPaginas();
 	void mostrarPaginaActualYLista(string, string, int, int);
-
+	void propiedadesConsola();
 
 	~Control(void);
 };

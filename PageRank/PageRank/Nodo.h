@@ -13,7 +13,7 @@ private:
 	string nombre;
 	typedef  map < Nodo*, int, less<Nodo*> > Map;
 	typedef  map < Nodo*, bool, less<Nodo*> > MapBool;
-	Map  outbound;   ///Con solo esta linea ya esta creado, no hace falta ponerle mas
+	Map  outbound;   
 	MapBool inbound;
 	Map::iterator mapIterator;
 public:
@@ -34,7 +34,7 @@ public:
 	void setNoVisitados();
 	//VECINOS SALIENTES....
 	void agregarNodo(Nodo*);
-	bool enviarClick(string); //string = nombre del nodo...
+	bool enviarClick(string); 
 	bool existeSaliente(Nodo*);
 	bool enviarClick(Nodo*);
 

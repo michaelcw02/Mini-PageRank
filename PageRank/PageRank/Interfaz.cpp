@@ -98,7 +98,7 @@ void Interfaz::plantillaPaginaInicio(int x, int y, string paginas){
 	gotoXY(x, y++);	cout << "|";                                                     gotoXY(x+79, y);cout<<"|"<< endl;
 	gotoXY(x, y++);	cout << "|Opciones:                                                                     |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
-	gotoXY(x, y++);	cout << "|-Presione el numero de la pagina seguido de una 'a' para acceder a ella. '1a' |" << endl;
+	gotoXY(x, y++);	cout << "|-Presione el numero de la pagina y seguido una 'a' para acceder a ella.'#a'   |" << endl;
 	gotoXY(x, y++);	cout << "|-Para acceder a una pagina nueva, presione la letra 'O'                       |" << endl;
 	gotoXY(x, y++);	cout << "|-Digite 'PR' para ver el page rank de cada pagina.                            |" << endl;
 	gotoXY(x, y++);	cout << "|-Digite 'Z' para salir                                                        |" << endl;
@@ -123,7 +123,7 @@ void Interfaz::plantillaPagina(int x, int y,string name,string paginas){
 	gotoXY(x, y++);	cout << "|Opciones:                                                                     |" << endl;
 	gotoXY(x, y++);	cout << "|                                                                              |" << endl;
 	gotoXY(x, y++);	cout << "|-Presione el numero de la pagina para hacer un click.                         |" << endl;
-	gotoXY(x, y++);	cout << "|-Presione el numero de la pagina seguido de una 'a' para acceder a ella. '1a' |" << endl;
+	gotoXY(x, y++);	cout << "|-Presione el numero de la pagina y seguido una 'a' para acceder a ella. '#a'  |" << endl;
 	gotoXY(x, y++);	cout << "|-Para acceder a una pagina nueva a partir de esta, presione la letra 'N'      |" << endl;
 	gotoXY(x, y++);	cout << "|-Para acceder a una pagina nueva no relacionada a esta, presione la letra 'O' |" << endl;
 	gotoXY(x, y++);	cout << "|-Digite 'PR' para ver el page rank de cada pagina.                            |" << endl;

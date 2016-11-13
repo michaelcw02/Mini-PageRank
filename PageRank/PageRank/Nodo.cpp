@@ -140,14 +140,6 @@ bool Nodo::existeSaliente(Nodo * nodo){
 	if(mapIterator != outbound.end())
 		return true;
 	return false;
-
-	//mapIterator = outbound.begin();
-	//while(mapIterator != outbound.end()){
-	//	if(mapIterator->first->getNombre() == ne->getNombre())
-	//		return true;
-	//	mapIterator++;
-	//}
-	//return false;
 }
 
 bool Nodo::existeEntrante(Nodo * ne){

@@ -45,12 +45,26 @@ Nodo* Control::procesoInicial() {
 		if(respuesta == "O" || respuesta == "o") {
 			Interfaz::entornoPagina(ANCHO, ALTO);
 			cin>>respuesta;
+			while(respuesta.find(':') != -1){
+				int pos = respuesta.find(':');
+				respuesta.erase(pos,1);
+			}
 			if (respuesta != "0") {
 				nodoActual = registrarPaginaNueva(respuesta);
 			} else
 				nodoActual = NULL;
 			activo = false;
 		}
+		
+		if(isDigit(respuesta)) {
+			int opc = stoi(respuesta);
+			nodoActual = graf->getPaginaByNum(opc, nodoActual);
+			if(nodoActual)
+				activo = false;
+			else
+				activo = true;
+		}
+
 		if(isAcceder(respuesta)) {
 			respuesta.pop_back(); //Para quitar la a
 			int opc = stoi(respuesta);
@@ -60,14 +74,7 @@ Nodo* Control::procesoInicial() {
 			else
 				activo = true;
 		}
-		if(isDigit(respuesta)) {
-			int opc = stoi(respuesta);
-			nodoActual = graf->getPaginaByNum(opc, nodoActual);
-			if(nodoActual)
-				activo = false;
-			else
-				activo = true;
-		}
+
 		if(respuesta == "PR" || respuesta == "pr") {
 			pageRank();
 			activo = true;
@@ -103,6 +110,10 @@ Nodo* Control::desarrollarOpcion(string respuesta, Nodo* nodoActual) {
 		Interfaz::limpiarPantalla();
 		Interfaz::mostrarOpcionNuevaPagina(ANCHO, ALTO, nodoActual->toString());
 		cin>>respuesta;
+		while(respuesta.find(':') != -1){
+				int pos = respuesta.find(':');
+				respuesta.erase(pos,1);
+		}
 		nodo = graf->getPagina(respuesta);
 		if (!nodo) {
 			crearPaginaApartirDeActual(respuesta, nodoActual);
@@ -185,7 +196,7 @@ list<Nodo*> Control::getNodos(){
 	return graf->getNodos();
 }
 
-void Control::darClick(Nodo* nodoFuturo, Nodo * actual){ /////Checkear esto 
+void Control::darClick(Nodo* nodoFuturo, Nodo * actual){
 	if(nodoFuturo){
 		if(actual->existeSaliente(nodoFuturo)){
 			actual->enviarClick(nodoFuturo->getNombre());
@@ -279,6 +290,14 @@ void Control::mostrarPaginaActualYLista(string pagina, string respuesta, int cli
 	cout<<graf->getNodos().size();
 	Interfaz::mostrarCantClicks(pagina, clicksEnt, paginasEnt);
 	Interfaz::plantillaPagina(ANCHO, ALTO, pagina, graf->mostrarGrafoSinPagActual(respuesta));
+}
+
+void Control::propiedadesConsola(){
+	HWND console = GetConsoleWindow();
+    RECT r;
+    GetWindowRect(console, &r);
+    MoveWindow(console, r.left, r.top, 1000, 500, TRUE);
+
 }
 
 Control::~Control(void)
