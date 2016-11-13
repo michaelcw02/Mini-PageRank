@@ -43,6 +43,7 @@ Nodo* Control::procesoInicial() {
 		mostrarListaPaginas();
 		cin>>respuesta;
 		if(respuesta == "O" || respuesta == "o") {
+			Interfaz::limpiarPantalla();
 			Interfaz::entornoPagina(ANCHO, ALTO);
 			cin>>respuesta;
 			while(respuesta.find(':') != -1){
