@@ -1,5 +1,13 @@
 #pragma once
 #include "Nodo.h"
+
+//Universidad Nacional de Costa Rica
+//		Estructura de Datos
+//			Proyecto II
+//Profesor: Santiago Caamaño Polini
+//Estudiantes:	Andrey Arguedas Espinoza
+//				Michael Chen Wang
+
 class Grafo
 {
 private:

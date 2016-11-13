@@ -6,6 +6,13 @@
 #include <map>
 #include <fstream>
 
+//Universidad Nacional de Costa Rica
+//		Estructura de Datos
+//			Proyecto II
+//Profesor: Santiago Caamaño Polini
+//Estudiantes:	Andrey Arguedas Espinoza
+//				Michael Chen Wang
+
 using namespace std;
 
 class Nodo{

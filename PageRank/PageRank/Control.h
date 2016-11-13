@@ -3,6 +3,13 @@
 #include "PageRanker.h"
 #include "Interfaz.h"
 
+//Universidad Nacional de Costa Rica
+//		Estructura de Datos
+//			Proyecto II
+//Profesor: Santiago Caamaño Polini
+//Estudiantes:	Andrey Arguedas Espinoza
+//				Michael Chen Wang
+
 
 static const int ALTO = 2;
 static const int ANCHO = 20;
